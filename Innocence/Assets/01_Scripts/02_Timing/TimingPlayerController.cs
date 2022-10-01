@@ -118,9 +118,11 @@ public class TimingPlayerController : MonoBehaviour
     }
 
 
-    //読み込んでから0.5秒以後にSpaceキーで開始
+    //読み込んでからミッション表示後ゲームスタート
     IEnumerator StartDelay()
     {
+        yield return new WaitForSeconds(3.0f);
+        /*
         yield return new WaitForSeconds(1.0f);
         countDownText.text = "3";
         yield return new WaitForSeconds(1.0f);
@@ -129,6 +131,7 @@ public class TimingPlayerController : MonoBehaviour
         countDownText.text = "1";
         yield return new WaitForSeconds(1.0f);
         countDownText.text = "";
+        */
         //SE
         SoundManager.instance.PlaySE(SoundManager.SE_Type.T_Start);
         //ゲームスタート

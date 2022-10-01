@@ -12,7 +12,6 @@ public class TimingManager : MonoBehaviour
     [SerializeField] private GameObject[] map = null;
     [SerializeField] private int mapNum = 0;
 
-    // Start is called before the first frame update
     void Start()
     {
         //mapの生成

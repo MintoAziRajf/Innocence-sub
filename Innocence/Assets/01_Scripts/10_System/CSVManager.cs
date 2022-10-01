@@ -98,6 +98,7 @@ public class CSVManager : SingletonMonoBehaviour<CSVManager>
                 subDatas[i - 1].Add(line.Split(','));
             }
         }
+        Debug.Log("全てのCSVを読み込みました。");
     }
 
     //ステージ遷移プレハブ
