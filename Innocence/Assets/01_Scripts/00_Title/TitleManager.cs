@@ -41,7 +41,6 @@ public class TitleManager : MonoBehaviour
         StageSelectAnimation();
         if (Input.GetButtonDown("Cancel"))
         {
-            Debug.Log("a");
             //SoundManager.instance.PlaySE(SoundManager.SE_Type.Cancel);
             isTitle = true;
             animator.SetBool("isTitle", isTitle);
