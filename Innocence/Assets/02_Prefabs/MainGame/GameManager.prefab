@@ -1241,11 +1241,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb47a3cd4a6466941bd3fd25f5d558a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isBattle: 0
   pauseObj: {fileID: 2733650350123406417}
   skipButton: {fileID: 2733650351558216423}
   loadPrefab: {fileID: 5034313464348115344, guid: 7d5b3b90aaf45274f87f266a4322d19c,
     type: 3}
-  stages: 0
   gameoverObj: {fileID: 478255832946561877}
   gameclearObj: {fileID: 5914833238165063400}
 --- !u!114 &2733650351860380236
@@ -1264,6 +1264,8 @@ MonoBehaviour:
     type: 3}
   stonePrefab: {fileID: 3208785419052013036, guid: c6082cd71db7ccf48ab4b62e11bf7c01,
     type: 3}
+  buttonPrefab: {fileID: 0}
+  trapPrefab: {fileID: 0}
   mapParent: {fileID: 0}
 --- !u!1 &3984553778509427668
 GameObject:
@@ -1549,7 +1551,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6124158163949633293}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: dcede860908d0aa42bbfa17ed3b68a9d, type: 2}
   m_CullingMode: 0

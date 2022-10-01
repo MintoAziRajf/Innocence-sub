@@ -6,7 +6,8 @@ public class ShootingManager : MonoBehaviour
 {
     ShootingPlayerController spc;
     EnemyController ec;
-    //説明
+
+    //操作説明オブジェクト
     [SerializeField] private GameObject guide = null;
 
     void Start()
@@ -16,16 +17,18 @@ public class ShootingManager : MonoBehaviour
         StartCoroutine(StartDelay());
     }
 
+    //ミニゲーム開始までのdelay
     private IEnumerator StartDelay()
     {
-        yield return new WaitForSeconds(0.2f);
-        guide.SetActive(true);
-        yield return new WaitForSeconds(0.8f);
+        yield return new WaitForSeconds(0.2f);//0.2秒表示するまでのdelay
+        guide.SetActive(true);//操作説明を表示
+        yield return new WaitForSeconds(1.5f);//3.5秒表示後ゲームをスタート
         ShootingStartGame();
     }
 
     public void ShootingEndGame()
     {
+        //弾の削除
         BulletsDestroy();
         //PlayerとEnemyの停止
         spc.IsStart = false;
@@ -34,6 +37,7 @@ public class ShootingManager : MonoBehaviour
 
     private void ShootingStartGame()
     {
+        //PlayerとEnemyの進行
         spc.IsStart = true;
         ec.IsStart = true;
     }
