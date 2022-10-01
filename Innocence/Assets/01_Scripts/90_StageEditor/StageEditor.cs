@@ -76,6 +76,7 @@ public class StageEditor : MonoBehaviour
         s = stepsText.text;
         sw.WriteLine(s);
         sw.Flush();
+        sw.Close();
 
         // 指定したCSVへステージ情報を保存
         path = Application.dataPath + "/Resources/CSV/gameTest_" + stageDropdown.value.ToString("0") + ".csv";
@@ -96,6 +97,7 @@ public class StageEditor : MonoBehaviour
 
     void Awake()
     {
+
     }
 }
 
