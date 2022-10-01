@@ -124,13 +124,15 @@ public class MainGameManager : SingletonMonoBehaviour<MainGameManager>
     {
         //全ての操作を停止
         this.IsStart = false;
-        yield return new WaitForSeconds(1.0f);
-        gameclearObj.SetActive(true);
+        yield return new WaitForSeconds(1.0f);//delay
+        gameclearObj.SetActive(true); //ゲームクリア画面表示
         //SE
         SoundManager.instance.PlaySE(SoundManager.SE_Type.M_Goal);
-        yield return new WaitForSeconds(2.0f);
+        //CSVManagerに次のステージ数を渡す
         csvManager.Stages = csvManager.Stages + 1;
-        LoadStage();
+        //ゲームクリアスクリプトに後の処理を渡す
+
+
     }
     //シーンのロード
     private void LoadStage()

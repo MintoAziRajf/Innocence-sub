@@ -128,6 +128,50 @@ public class CSVManager : SingletonMonoBehaviour<CSVManager>
         }
     }
 
+
+    TextAsset playerCSV; //全ステージのクリア情報
+    List<string[]> playerDatas = new List<string[]>();//playerCSVのリスト
+    public void LoadPlayerData()
+    {
+        playerCSV = Resources.Load("CSV/PlayerData") as TextAsset;
+        StringReader reader = new StringReader(playerCSV.text);
+
+        // , で分割しつつ一行ずつ読み込み
+        //リストに追加
+        while (reader.Peek() != -1)
+        {
+            string line = reader.ReadLine();
+            playerDatas.Add(line.Split(','));
+        }
+    }
+
+    public void KeepPlayerData(int curretStages, int remainingSteps)
+    {
+        StreamWriter sw;
+        FileInfo fi;
+        string path = Application.dataPath + "/Resources/CSV/PlayerData.csv";
+        fi = new FileInfo(path);
+        sw = fi.CreateText();
+        for(int i = 0; i < playerDatas.Count; i++)
+        {
+            if(i == curretStages)
+            {
+                string s;
+                if(remainingSteps >= 10) s = "S";
+                else if(remainingSteps >= 5) s = "A";
+                else s = "B";
+                sw.WriteLine("TRUE," + s);
+            }
+            else
+            {
+                sw.WriteLine(playerDatas[i][0] + "," + playerDatas[i][1]);
+            }
+            sw.Flush();
+            sw.Close();
+        }
+        
+    }
+
     /// <summary>
     /// Debug用
     /// </summary>
