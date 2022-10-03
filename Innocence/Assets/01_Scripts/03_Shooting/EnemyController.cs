@@ -20,7 +20,11 @@ public class EnemyController : MonoBehaviour
     private int hp = 40;
     //hp表示用
     [SerializeField] private GameObject[] hpWall = null;
-    [SerializeField] private Material mat = null;
+    [ColorUsage(false, true)] Color firstColor = new Color(0.3f, 2.5f, 4.0f); //blue
+    [ColorUsage(false, true)] Color secondColor = new Color(0.3f, 3.0f, 0.5f);//green
+    [ColorUsage(false, true)] Color thirdColor = new Color(3.0f, 3.0f, 0.3f); //yellow
+    [ColorUsage(false, true)] Color fourthColor = new Color(3.0f, 0.3f, 0.3f);//red
+    [ColorUsage(false, false)] Color damagedColor = new Color(0.23f, 0.23f, 0.23f);//gray
 
     //射撃
     private float interval = 0.2f;
@@ -263,6 +267,7 @@ public class EnemyController : MonoBehaviour
         rb.AddForce(angle * power);
         Destroy(b, 6.0f);
     }
+
     //向き追従
     private void LookAtPlayer()
     {
@@ -286,6 +291,7 @@ public class EnemyController : MonoBehaviour
 
     private void EnemyDamaged()
     {
+        //HPを減らす
         hp--;
 
         //HitEffect
@@ -294,8 +300,34 @@ public class EnemyController : MonoBehaviour
         Destroy(spawnedHit,1.0f);
 
         //HpDisplay
+        switch(hp)
+        {
+            case 30:
+                SwitchColor(secondColor);
+                break;
+            case 20:
+                SwitchColor(thirdColor);
+                break;
+            case 10:
+                SwitchColor(fourthColor);
+                break;
+            default:
+                break;
+        }
 
-        hpWall[hp].GetComponent<Renderer>().material = mat;
+        //残りHPの色を変える(使用するColor)
+        void SwitchColor(Color c) 
+        {
+            for (int i = hp; i >= 0; i--)
+            {
+                hpWall[i].GetComponent<MeshRenderer>().material.SetColor("_Color", c);
+            }
+        }
+
+        //HPを減らす表示
+        hpWall[hp].GetComponent<MeshRenderer>().material.SetColor("_Color", damagedColor);
+
+        //HPが0の時終了
 
         if (hp == 0)
         {

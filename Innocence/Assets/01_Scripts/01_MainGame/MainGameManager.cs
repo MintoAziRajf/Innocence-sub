@@ -46,7 +46,6 @@ public class MainGameManager : SingletonMonoBehaviour<MainGameManager>
 
     //Pause
     [SerializeField] private GameObject pauseObj = null;
-    [SerializeField] private Button skipButton = null;
     //Scene遷移
     [SerializeField] private GameObject loadPrefab = null;
 
@@ -128,12 +127,17 @@ public class MainGameManager : SingletonMonoBehaviour<MainGameManager>
         gameclearObj.SetActive(true); //ゲームクリア画面表示
         //SE
         SoundManager.instance.PlaySE(SoundManager.SE_Type.M_Goal);
+        //リザルトスクリプトに後の処理を渡す
+        gameclearObj.GetComponent<Result>().ResultData(playerController.Steps);
+        //クリアデータの保存
+        csvManager.KeepPlayerData(csvManager.Stages, playerController.Steps);
         //CSVManagerに次のステージ数を渡す
         csvManager.Stages = csvManager.Stages + 1;
-        //ゲームクリアスクリプトに後の処理を渡す
-
-
+        yield return new WaitForSeconds(3.0f); //result表示中待機
+        //yield return new WaitWhile(() => !Input.GetKeyDown(KeyCode.Space)); //待機後Spaceキーで次のステージへ
+        csvManager.LoadGame();
     }
+
     //シーンのロード
     private void LoadStage()
     {

@@ -16,7 +16,7 @@
             "typeInfo": {
                 "fullName": "UnityEditor.ShaderGraph.Internal.ColorShaderProperty"
             },
-            "JSONnodeData": "{\n    \"m_Guid\": {\n        \"m_GuidSerialized\": \"7cb179b9-d5b4-4676-b3da-4283e8aa2281\"\n    },\n    \"m_Name\": \"GridColor\",\n    \"m_DefaultReferenceName\": \"Color_9CC2EBB\",\n    \"m_OverrideReferenceName\": \"\",\n    \"m_GeneratePropertyBlock\": true,\n    \"m_Precision\": 0,\n    \"m_GPUInstanced\": false,\n    \"m_Hidden\": false,\n    \"m_Value\": {\n        \"r\": 0.38412246108055117,\n        \"g\": 0.7916460633277893,\n        \"b\": 0.9811320900917053,\n        \"a\": 0.0\n    },\n    \"m_ColorMode\": 1\n}"
+            "JSONnodeData": "{\n    \"m_Guid\": {\n        \"m_GuidSerialized\": \"7cb179b9-d5b4-4676-b3da-4283e8aa2281\"\n    },\n    \"m_Name\": \"GridColor\",\n    \"m_DefaultReferenceName\": \"Color_9CC2EBB\",\n    \"m_OverrideReferenceName\": \"_Color\",\n    \"m_GeneratePropertyBlock\": true,\n    \"m_Precision\": 0,\n    \"m_GPUInstanced\": false,\n    \"m_Hidden\": false,\n    \"m_Value\": {\n        \"r\": 0.38412246108055117,\n        \"g\": 0.7916460633277893,\n        \"b\": 0.9811320900917053,\n        \"a\": 0.0\n    },\n    \"m_ColorMode\": 1\n}"
         }
     ],
     "m_SerializedKeywords": [],

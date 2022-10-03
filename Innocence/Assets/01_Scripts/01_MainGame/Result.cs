@@ -5,16 +5,24 @@ using UnityEngine.UI;
 
 public class Result : MonoBehaviour
 {
+    [SerializeField] private Image[] missionImage = new Image[3];
+    [SerializeField] private Sprite successSprite = null;
+    [SerializeField] private Image rankImage = null;
+    [SerializeField] private Image rankImage_sub = null;
+    [SerializeField] private Sprite[] rankSprite = new Sprite[3];
+
+    Animator anim;
+
     private enum RANK
     {
         GOOD = 0,
-        GREAT = 5,
-        EXCELLENT = 10
+        GREAT = 1,
+        EXCELLENT = 2
     }
 
     void OnEnable()
     {
-        
+        anim = this.GetComponent<Animator>();
     }
 
     /// <summary>
@@ -23,20 +31,16 @@ public class Result : MonoBehaviour
     /// <param name="remainingSteps">残り歩数</param>
     public void ResultData(int remainingSteps)
     {
-        switch (CheckRank(remainingSteps))
-        {
-            case RANK.EXCELLENT: //星3
-                //処理
-                break;
-            case RANK.GREAT: //星2
-                //処理
-                break;
-            case RANK.GOOD: //星1
-                //処理
-                break;
-            default:
-                break;
-        }
+        RANK rank = CheckRank(remainingSteps);
+        anim.SetInteger("Rank",(int)rank);
+        missionImage[0].sprite = successSprite; //星１
+        if (rank == RANK.GOOD) return;
+        missionImage[1].sprite = successSprite; //星２
+        if (rank == RANK.GREAT) return;
+        missionImage[2].sprite = successSprite; //星３
+
+        rankImage.sprite = rankSprite[(int)rank]; //ランクに応じてrankSprite[]を表示
+        rankImage_sub.sprite = rankSprite[(int)rank]; //ランクに応じてrankSprite[]を表示
     }
 
     /// <summary>
@@ -46,15 +50,15 @@ public class Result : MonoBehaviour
     /// <returns>
     /// 0-4:GOOD 
     /// 5-9:GREAT
-    /// 10-
+    /// 10-:EXCELLENT
     /// </returns>
     private RANK CheckRank(int num)
     {
-        if (num >= (int)RANK.EXCELLENT)
+        if (num >= 10) 
         {
             return RANK.EXCELLENT;
         }
-        else if (num >= (int)RANK.GREAT)
+        else if (num >= 5)
         {
             return RANK.GREAT;
         }
