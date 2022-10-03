@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class BossController : MonoBehaviour
 {
     //何ウェーブ目からスタートするか(Debug用)
-    [SerializeField] private int startWave = 0;
+    [SerializeField] private int startWave = 1;
 
     //攻撃開始までのフレーム数(60f = 1.0s)
     private int startDelay = 60;
@@ -57,7 +57,7 @@ public class BossController : MonoBehaviour
         }
         bossText.text = serifDatas[1][0];
         //攻撃loop
-        for (int i = 1; i < attackCount; i++)
+        for (int i = startWave; i < attackCount; i++)
         {
             //攻撃
             Attack(i);

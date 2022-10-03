@@ -54,6 +54,7 @@ public class PlayerController : MonoBehaviour
     private int steps = 0;
     public int Steps
     {
+        get { return steps; }
         set { steps = value; }
     }
     //歩数表示用:UI

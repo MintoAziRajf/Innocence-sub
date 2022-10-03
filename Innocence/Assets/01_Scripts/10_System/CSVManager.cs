@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using System.IO;
 using System.Text;//DebugLog用
 
@@ -131,9 +132,12 @@ public class CSVManager : SingletonMonoBehaviour<CSVManager>
 
     TextAsset playerCSV; //全ステージのクリア情報
     List<string[]> playerDatas = new List<string[]>();//playerCSVのリスト
+    /// <summary>
+    /// プレイヤーデータのロード(ステージ選択画面で使用)
+    /// </summary>
     public void LoadPlayerData()
     {
-        playerCSV = Resources.Load("CSV/PlayerData") as TextAsset;
+        playerCSV = Resources.Load("CSV/PlayerSave") as TextAsset;
         StringReader reader = new StringReader(playerCSV.text);
 
         // , で分割しつつ一行ずつ読み込み
@@ -145,16 +149,22 @@ public class CSVManager : SingletonMonoBehaviour<CSVManager>
         }
     }
 
+    /// <summary>
+    /// クリアデータの保存
+    /// </summary>
+    /// <param name="curretStages">現在のステージ</param>
+    /// <param name="remainingSteps">残り歩数</param>
     public void KeepPlayerData(int curretStages, int remainingSteps)
     {
+        LoadPlayerData();
         StreamWriter sw;
         FileInfo fi;
-        string path = Application.dataPath + "/Resources/CSV/PlayerData.csv";
+        string path = Application.dataPath + "/Resources/CSV/PlayerSave.csv";
         fi = new FileInfo(path);
         sw = fi.CreateText();
         for(int i = 0; i < playerDatas.Count; i++)
         {
-            if(i == curretStages)
+            if(i == curretStages - 1)
             {
                 string s;
                 if(remainingSteps >= 10) s = "S";
@@ -166,11 +176,30 @@ public class CSVManager : SingletonMonoBehaviour<CSVManager>
             {
                 sw.WriteLine(playerDatas[i][0] + "," + playerDatas[i][1]);
             }
-            sw.Flush();
-            sw.Close();
         }
-        
+        sw.Flush();
+        sw.Close();
+        Debug.Log("クリアデータを保存しました。");
     }
+
+    private void InitializePlayerData()
+    {
+        LoadPlayerData();
+        StreamWriter sw;
+        FileInfo fi;
+        string path = Application.dataPath + "/Resources/CSV/PlayerSave.csv";
+        string s = "FALSE,C";
+        fi = new FileInfo(path);
+        sw = fi.CreateText();
+        Debug.Log(playerDatas.Count);
+        for (int i = 0; i < playerDatas.Count; i++)
+        {
+            sw.WriteLine("FALSE" + "," + "C");
+        }
+        sw.Flush();
+        sw.Close();
+    }
+
 
     /// <summary>
     /// Debug用
@@ -181,13 +210,24 @@ public class CSVManager : SingletonMonoBehaviour<CSVManager>
         this.Stages = num;
         LoadGame();
     }
+
     [SerializeField] private int debugStage = 0;
+    [SerializeField] Text text = null;
     private void Update()
     {
-        if(Input.GetKey(KeyCode.O) && Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKey(KeyCode.LeftAlt) && Input.GetKeyDown(KeyCode.L))
         {
-            this.Stages = debugStage;
+            LoadPlayerData();
+            text.text = playerDatas[0][0] + "," + playerDatas[0][1];
+        }
+        if (Input.GetKey(KeyCode.LeftAlt) && Input.GetKeyDown(KeyCode.P))
+        {
+            this.Stages = 1;
             LoadGame(this.Stages);
+        }
+        if (Input.GetKey(KeyCode.LeftAlt) && Input.GetKeyDown(KeyCode.O))
+        {
+            InitializePlayerData();
         }
     }
     
