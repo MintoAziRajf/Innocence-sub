@@ -134,7 +134,7 @@ public class MainGameManager : SingletonMonoBehaviour<MainGameManager>
         //CSVManagerに次のステージ数を渡す
         csvManager.Stages = csvManager.Stages + 1;
         yield return new WaitForSeconds(3.0f); //result表示中待機
-        //yield return new WaitWhile(() => !Input.GetKeyDown(KeyCode.Space)); //待機後Spaceキーで次のステージへ
+        yield return new WaitWhile(() => !Input.GetKeyDown(KeyCode.Space)); //待機後Spaceキーで次のステージへ
         csvManager.LoadGame();
     }
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
+using System.Text;
 
 public class StageInfo : MonoBehaviour
 {
@@ -11,19 +12,17 @@ public class StageInfo : MonoBehaviour
     [SerializeField] private Text stamina = null;
     [SerializeField] private Image stageImage = null;
 
-    TextAsset stageCSV; //ステージの情報
     List<string[]> stageInfo = new List<string[]>();//ステージ情報のリスト
 
     private void Awake()
     {
-        stageCSV = Resources.Load("CSV/StageInfo") as TextAsset;
-        StringReader reader = new StringReader(stageCSV.text);
-
+        string path = Application.dataPath + @"/08_CSV/StageInfo.csv"; //ステージ情報の格納場所
+        StreamReader csv = new StreamReader(path, Encoding.UTF8);　//StreamReaderで読み込み
+        string line = null;
         // , で分割しつつ一行ずつ読み込み
         //リストに追加
-        while (reader.Peek() != -1)
+        while ((line = csv.ReadLine()) != null)
         {
-            string line = reader.ReadLine();
             stageInfo.Add(line.Split(','));
         }
     }
