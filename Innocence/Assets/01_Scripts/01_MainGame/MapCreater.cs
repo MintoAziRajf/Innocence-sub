@@ -47,7 +47,7 @@ public class MapCreater : MonoBehaviour
     /// </summary>
     private void CreateMap()
     {
-        int game = 1; //Game判定用
+        int game = 0; //Game判定用
         //7ｘ6のマップにブロックを配置する
         for (int i = 0; i < 6; i++)
         {

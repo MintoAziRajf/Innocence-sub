@@ -66,7 +66,7 @@ public class TitleManager : MonoBehaviour
     {
         SelectSubmit();
         animator.SetTrigger("selectNewGame");
-        StartCoroutine(LoadScene(1));
+        LoadScene(0);
     }
     //ステージセレクト
     public void PushStageSelect()
@@ -81,14 +81,13 @@ public class TitleManager : MonoBehaviour
         animator.SetTrigger("selectedStage");
         SoundManager.instance.PlaySE(SoundManager.SE_Type.Submit);
         SelectSubmit();
-        StartCoroutine(LoadScene(num));
+        LoadScene(num);
     }
 
     //シーン遷移
-    private IEnumerator LoadScene(int num)
+    private void LoadScene(int num)
     {
         csvManager.Stages = num;
-        yield return null;
         csvManager.LoadGame();
     }
 
