@@ -1,0 +1,40 @@
+ManifestFileVersion: 0
+CRC: 4145503856
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 876a36e8b49c168fd0945b10d13257c9
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 5ad585dd02dfb5016c0dad519eab8f49
+HashAppended: 0
+ClassTypes:
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/08_CSV/game_4.csv
+- Assets/08_CSV/battle_2.csv
+- Assets/08_CSV/dialogue_2.csv
+- Assets/08_CSV/battle_3.csv
+- Assets/08_CSV/game_3.csv
+- Assets/08_CSV/battle_0.csv
+- Assets/08_CSV/battle_1.csv
+- Assets/08_CSV/map_0.csv
+- Assets/08_CSV/game_0.csv
+- Assets/08_CSV/game_1.csv
+- Assets/08_CSV/dialogue_1.csv
+- Assets/08_CSV/map_3.csv
+- Assets/08_CSV/game_5.csv
+- Assets/08_CSV/map_2.csv
+- Assets/08_CSV/dialogue_3.csv
+- Assets/08_CSV/StageInfo.csv
+- Assets/08_CSV/map_4.csv
+- Assets/08_CSV/map_1.csv
+- Assets/08_CSV/SkillCheck.csv
+- Assets/08_CSV/game_2.csv
+- Assets/08_CSV/Master.csv
+- Assets/08_CSV/map_6.csv
+- Assets/08_CSV/dialogue_0.csv
+- Assets/08_CSV/game_6.csv
+- Assets/08_CSV/map_5.csv
+Dependencies: []

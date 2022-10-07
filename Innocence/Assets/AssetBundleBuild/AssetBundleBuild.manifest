@@ -1,0 +1,10 @@
+ManifestFileVersion: 0
+CRC: 1471824063
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: playersave
+      Dependencies: {}
+    Info_1:
+      Name: datas
+      Dependencies: {}

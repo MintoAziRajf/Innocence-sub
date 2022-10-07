@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class TimingManager : MonoBehaviour
 {
     //mainGameManager
-    MainGameManager mainGameManager;
+    MainGameManager mGameManager;
 
     //map
     [SerializeField] private GameObject[] map = null;
@@ -15,8 +15,8 @@ public class TimingManager : MonoBehaviour
     void Start()
     {
         //mapの生成
-        mainGameManager = GameObject.Find("GameManager").GetComponent<MainGameManager>();
-        mapNum = mainGameManager.Difficulty;
+        mGameManager = GameObject.Find("GameManager").GetComponent<MainGameManager>();
+        mapNum = mGameManager.Difficulty;
         map[mapNum].SetActive(true);
     }
 
@@ -25,6 +25,6 @@ public class TimingManager : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
         //シーンのアンロード,ゲームマネージャーに成否を送る
-        mainGameManager.StartCoroutine("UnloadScene", tf);
+        mGameManager.StartCoroutine("UnloadScene", tf);
     }
 }
