@@ -17,7 +17,8 @@ public class SoundManager : SingletonMonoBehaviour<SoundManager>
         Timing,
         Battle,
         Ending,
-        Opening
+        Opening,
+        SkillCheck
     }
 
     // SE管理
@@ -48,7 +49,9 @@ public class SoundManager : SingletonMonoBehaviour<SoundManager>
         B_Key,
         M_Switch,
 
-        B_Damage
+        B_Damage,
+        SC_Miss,
+        SC_Success
     }
 
     // クロスフェード時間

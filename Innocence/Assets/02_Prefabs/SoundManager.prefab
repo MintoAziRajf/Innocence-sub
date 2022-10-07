@@ -52,6 +52,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: ee8c480042237b64586b5e2dd4fa1fd0, type: 3}
   - {fileID: 8300000, guid: a3bca8bf601ba1d42b8d61743a32d46f, type: 3}
   - {fileID: 8300000, guid: ad315323cc8aec649914e1f4385bd159, type: 3}
+  - {fileID: 8300000, guid: f09835513ddfe504bbd49ef415236342, type: 3}
   SE_Clips:
   - {fileID: 8300000, guid: b8f3439c0562b8441905e848041e85e7, type: 3}
   - {fileID: 8300000, guid: e9a1f557d213ca349b0abc71eaeb9aad, type: 3}
@@ -74,6 +75,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 315bc4cad7e0357419534446a87bbef6, type: 3}
   - {fileID: 8300000, guid: 4bc0b91b05c09cf41be3fd40283c1543, type: 3}
   - {fileID: 8300000, guid: 48a86a4bead108441aa9421eedee49fc, type: 3}
+  - {fileID: 8300000, guid: 8e62a78e814272c4397aaf03ddf363be, type: 3}
+  - {fileID: 8300000, guid: 450d2bd9716931c4b96f627006d29e9c, type: 3}
 --- !u!114 &4308880353148590189
 MonoBehaviour:
   m_ObjectHideFlags: 0

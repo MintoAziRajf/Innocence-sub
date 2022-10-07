@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1502,90 +1502,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1423808332}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &1424494401
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 290162507122275952, guid: 05a4dc58e4edd2f44a77cb62537fad82,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 290162507122275952, guid: 05a4dc58e4edd2f44a77cb62537fad82,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 290162507122275952, guid: 05a4dc58e4edd2f44a77cb62537fad82,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 290162507122275952, guid: 05a4dc58e4edd2f44a77cb62537fad82,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 290162507122275952, guid: 05a4dc58e4edd2f44a77cb62537fad82,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 290162507122275952, guid: 05a4dc58e4edd2f44a77cb62537fad82,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 290162507122275952, guid: 05a4dc58e4edd2f44a77cb62537fad82,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 290162507122275952, guid: 05a4dc58e4edd2f44a77cb62537fad82,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 290162507122275952, guid: 05a4dc58e4edd2f44a77cb62537fad82,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 290162507122275952, guid: 05a4dc58e4edd2f44a77cb62537fad82,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 290162507122275952, guid: 05a4dc58e4edd2f44a77cb62537fad82,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 290162507122275953, guid: 05a4dc58e4edd2f44a77cb62537fad82,
-        type: 3}
-      propertyPath: isDebug
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 290162507122275953, guid: 05a4dc58e4edd2f44a77cb62537fad82,
-        type: 3}
-      propertyPath: debugStage
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 290162507122275953, guid: 05a4dc58e4edd2f44a77cb62537fad82,
-        type: 3}
-      propertyPath: text
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 290162507122275954, guid: 05a4dc58e4edd2f44a77cb62537fad82,
-        type: 3}
-      propertyPath: m_Name
-      value: CSVManager
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 05a4dc58e4edd2f44a77cb62537fad82, type: 3}
 --- !u!1001 &1470586844
 PrefabInstance:
   m_ObjectHideFlags: 0

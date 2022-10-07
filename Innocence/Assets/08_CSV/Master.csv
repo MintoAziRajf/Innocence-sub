@@ -1,4 +1,4 @@
-Stages,isBattle,mainCSV,subCSV
+﻿Stages,isBattle,mainCSV,subCSV
 0,FALSE,map_0,game_0
 1,FALSE,map_1,game_1
 2,TRUE,battle_0,dialogue_0
@@ -10,4 +10,3 @@ Stages,isBattle,mainCSV,subCSV
 8,TRUE,battle_2,dialogue_2
 9,FALSE,map_6,game_6
 10,TRUE,battle_3,dialogue_3
-11,END,battle_3,dialogue_3
