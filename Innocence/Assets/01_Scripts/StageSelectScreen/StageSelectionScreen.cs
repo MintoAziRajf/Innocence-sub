@@ -67,19 +67,19 @@ namespace StageSelectScene
             bool keyDown = (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow));
 
             
-        /*    ClearEvaluations("Text0", Score.SCORE0);
-            ClearEvaluations("Text1",Score.SCORE1);
-            ClearEvaluations("Text2", Score.SCORE2);
-            ClearEvaluations("Text3", Score.SCORE3);
-            ClearEvaluations("Text4", Score.SCORE1);
-            ClearEvaluations("Text5", Score.SCORE3);
-            ClearEvaluations("Text6", Score.SCORE2);
-            ClearEvaluations("Text7", Score.SCORE1);
-            ClearEvaluations("Text8", Score.SCORE0);
-            ClearEvaluations("Text9", Score.SCORE1);
-            ClearEvaluations("Text10", Score.SCORE2);
-            ClearEvaluations("Text11", Score.SCORE3);
-            ClearEvaluations("Text12", Score.SCORE2);*/
+            /*ClearEvaluations("Stage0", Score.SCORE0);
+            ClearEvaluations("Stage1", Score.SCORE1);
+            ClearEvaluations("Stage2", Score.SCORE2);
+            ClearEvaluations("Stage3", Score.SCORE3);
+            ClearEvaluations("Stage4", Score.SCORE1);
+            ClearEvaluations("Stage5", Score.SCORE3);
+            ClearEvaluations("Stage6", Score.SCORE2);
+            ClearEvaluations("Stage7", Score.SCORE1);
+            ClearEvaluations("Stage8", Score.SCORE0);
+            ClearEvaluations("Stage9", Score.SCORE1);
+            ClearEvaluations("Stage10", Score.SCORE2);
+            ClearEvaluations("Stage11", Score.SCORE3);
+            ClearEvaluations("Stage12", Score.SCORE2);*/
 
             //Debug.Log(checkMovingRangeUp);
 
@@ -125,12 +125,12 @@ namespace StageSelectScene
         {
             audioSource.PlayOneShot(audioClip);
 
-            if (other.name == "Text0")
+            if (other.name == "Stage0")
             {
                 checkMovingRangeUp = false;
                             
             }
-            else if (other.name == "Text12")
+            else if (other.name == "Stage12")
             {
                 checkMovingRangeDown = false;
             }
@@ -149,7 +149,7 @@ namespace StageSelectScene
 
             for (int i = 0; i < stages.Length; i++)
             {
-                if (other.name == "Text" + i)
+                if (other.name == "Stage" + i)
                 {
                     title.text = titles[i].text;
 

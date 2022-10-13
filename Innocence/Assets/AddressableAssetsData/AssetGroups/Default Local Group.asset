@@ -16,7 +16,133 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: 4b8ecc20c5963b4448668cdb407d4a3c
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 05ce6846e6d530e4bb82f54e3d0743f3
+    m_Address: Assets/StoryFile/CSV/Epilogue4ClearState.csv
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 0995eca5d5ee7084eb6bea7ec2df83c6
+    m_Address: Assets/StoryFile/CSV/Epilogue2ClaerState.csv
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 23f849e94e17d2e40be5e1b2a039642e
+    m_Address: Assets/StoryFile/Text/Epilogue1Start.txt
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 444fea4fb9f4df34d929561fc628ad85
+    m_Address: Assets/StoryFile/Text/Epilogue3Start.txt
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 56ca646bb716db84094929ed063a8e13
+    m_Address: Assets/Image/Smile.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 65171e4c1fb08114a8c73a05308d8f4c
+    m_Address: Assets/StoryFile/CSV/EpilogueStart1State.csv
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 7595e92fd9420574d8c5084382692030
+    m_Address: Assets/StoryFile/CSV/Epilogue3ClaerState.csv
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 81e69ec3704bd5c448361e3955ebb2fb
+    m_Address: Assets/StoryFile/Text/Epilogue2Clear.txt
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 8bde51cb096b05640b2752077499b811
+    m_Address: Assets/StoryFile/Text/Epilogue4Start.txt
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 96cc3bedcd3d66649a0e44572a215274
+    m_Address: Assets/StoryFile/Text/PrologueStory.txt
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 9d909c3451136d04d8bf656e3b7aa762
+    m_Address: Assets/StoryFile/CSV/EpilogueStart2State.csv
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: a1b1dde0f391ff943baf2f5a1e64d3e5
+    m_Address: Assets/Image/SilentExpression.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: a1cc3c7414a761a4aad9210f37c3837e
+    m_Address: Assets/StoryFile/CSV/EpilogueStart3State.csv
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: aadeb2eae6425d341aa8b660f3027497
+    m_Address: Assets/StoryFile/Text/Epilogue2Start.txt
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: b4e52e9144c6b2a44905a07281421509
+    m_Address: Assets/StoryFile/CSV/EpilogueStart4State.csv
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: b9e6eb5d11ed7294bb37c26bb767e50c
+    m_Address: Assets/StoryFile/CSV/PrologueState.csv
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: cd02f0ed09d1efa40b1d3112f0ef640d
+    m_Address: Assets/Image/ScaredExpression.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: d7437ca3ae3fdd04fb9fc155a3c00c48
+    m_Address: Assets/StoryFile/CSV/Epilogue1ClaerState.csv
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: d9ef124dac2058f4192248e8f15bbdf8
+    m_Address: Assets/StoryFile/Text/Epilogue1Claer.txt
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: f831dfc30ced78147849bd068ba90914
+    m_Address: Assets/StoryFile/Text/Epilogue4Clear.txt
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: fe52b4e3ed998bc40b250dcb743310e1
+    m_Address: Assets/StoryFile/Text/Epilogue3Clear.txt
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: c8afdbf5d9a37a345b513a77b1622dfb, type: 2}
   m_SchemaSet:
