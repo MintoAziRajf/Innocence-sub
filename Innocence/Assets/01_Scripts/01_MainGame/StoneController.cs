@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class StoneController : MonoBehaviour
 {
@@ -34,7 +35,13 @@ public class StoneController : MonoBehaviour
 
     //Minigame
     //ミニゲームの種類 0:シューティング 1:イライラ棒
-    [Range(0, 2)] public int gameType = 0;
+    private enum GAMETYPE
+    {
+        SHOOTING,
+        TIMING,
+        SKILLCHECK
+    }
+    private GAMETYPE gameType;
     //ゲームの難易度 10通り
     [Range(0, 9)] public int gameDifficulty = 0;
 
@@ -79,7 +86,7 @@ public class StoneController : MonoBehaviour
     }
     public void SetStoneInfo(int type, int difficulty)
     {
-        gameType = type;
+        gameType = (GAMETYPE)Enum.ToObject(typeof(GAMETYPE), type);
         gameDifficulty = difficulty;
     }
     public void PushStonePosition(int direction)
@@ -156,15 +163,20 @@ public class StoneController : MonoBehaviour
         mainGameManager.SetStone(GetComponent<StoneController>());
         switch (gameType)
         {
-            case 0:
+            case GAMETYPE.SHOOTING:
                 SoundManager.instance.PlayBGM(SoundManager.BGM_Type.Shooting);
                 mainGameManager.Difficulty = gameDifficulty;
                 mainGameManager.StartCoroutine("SceneAdd", "03_Shooting");
                 break;
-            case 1:
+            case GAMETYPE.TIMING:
                 SoundManager.instance.PlayBGM(SoundManager.BGM_Type.Timing);
                 mainGameManager.Difficulty = gameDifficulty;
                 mainGameManager.StartCoroutine("SceneAdd", "02_Timing");
+                break;
+            case GAMETYPE.SKILLCHECK:
+                SoundManager.instance.PlayBGM(SoundManager.BGM_Type.SkillCheck);
+                mainGameManager.Difficulty = gameDifficulty;
+                mainGameManager.StartCoroutine("SceneAdd", "04_SkillCheck");
                 break;
             default:
                 Debug.Log("不正なゲームIDです。");

@@ -27,6 +27,9 @@ EditorBuildSettings:
     path: Assets/00_Scenes/03_Shooting.unity
     guid: d504c547056480842aebbaa354281244
   - enabled: 1
+    path: Assets/00_Scenes/04_SkillCheck.unity
+    guid: a16c52a2b51c3524aa96bd6b253643a3
+  - enabled: 1
     path: Assets/00_Scenes/05_Ending.unity
     guid: fa55c2b932f7344489ecc9966fdd1338
   - enabled: 1

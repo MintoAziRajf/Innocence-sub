@@ -51,14 +51,16 @@ public class SkillCheckManager : MiniGameMonoBehaviour
         set { quota = value; }
     }
 
+    //UI
+    [SerializeField] private GameObject clearUI = null;
+
     void OnEnable()
     {
-        SoundManager.instance.PlayBGM(SoundManager.BGM_Type.SkillCheck);
-        //mGameManager = GameObject.Find("GameManager").GetComponent<MainGameManager>();
-        //gameInfo = CSVManager.instance.SkillCheckInfo((int)CheckDiffculty(mGameManager.Difficulty));
+        mGameManager = GameObject.Find("GameManager").GetComponent<MainGameManager>();
         csvManager = GameObject.Find("CSVManager").GetComponent<CSVManager>();
+        gameInfo = csvManager.SkillCheckInfo(mGameManager.Difficulty);
         scc = GameObject.Find("Player").GetComponent<SkillCheckController>();
-        gameInfo = csvManager.SkillCheckInfo(debugDiff);
+        //gameInfo = csvManager.SkillCheckInfo(debugDiff);
         SetDifficulty();
         CreateNode();
         StartCoroutine(StartDelay());
@@ -82,12 +84,16 @@ public class SkillCheckManager : MiniGameMonoBehaviour
         if (quota <= 0)
         {
             Debug.Log("成功");
+            //ClearUIをアクティブ
+            clearUI.SetActive(true);
             //シーンのアンロード,ゲームマネージャーに成否を送る
-            //mGameManager.StartCoroutine("UnloadScene", tf);
+            mGameManager.StartCoroutine("UnloadScene", true);
         }
         else
         {
             Debug.Log("失敗");
+            //シーンのアンロード,ゲームマネージャーに成否を送る
+            mGameManager.StartCoroutine("UnloadScene", false);
         }
     }
 
