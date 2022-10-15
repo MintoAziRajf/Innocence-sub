@@ -59,6 +59,12 @@ MonoBehaviour:
     m_SerializedLabels: []
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
+  - m_GUID: 77ea9bbf79370754eafea6d92c5bdf37
+    m_Address: Assets/08_CSV/PlayerSave.csv
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: 81e69ec3704bd5c448361e3955ebb2fb
     m_Address: Assets/StoryFile/Text/Epilogue2Clear.txt
     m_ReadOnly: 0
@@ -133,6 +139,12 @@ MonoBehaviour:
     m_TargetAsset: {fileID: 0}
   - m_GUID: f831dfc30ced78147849bd068ba90914
     m_Address: Assets/StoryFile/Text/Epilogue4Clear.txt
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: fbd0eb8b2a57f4944abd89d58ee717e9
+    m_Address: Assets/StreamingAssets/CSV/PlayerSave.csv
     m_ReadOnly: 0
     m_SerializedLabels: []
     m_MainAsset: {fileID: 0}

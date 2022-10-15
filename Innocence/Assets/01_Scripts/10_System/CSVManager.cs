@@ -167,8 +167,8 @@ public class CSVManager : SingletonMonoBehaviour<CSVManager>
     {
         playerDatas.Clear();
         //LoadCSV("playersave", playerDatas, false);
-
-        string path = Path.Combine(Application.streamingAssetsPath, "CSV/PlayerSave.csv");
+        string path = "Assets/08_CSV/PlayerSave.csv";
+        //string path = Path.Combine(Application.streamingAssetsPath, "CSV/PlayerSave.csv");
         //string path = Resources.Load(PlayerSave);
         StreamReader csv = new StreamReader(path, Encoding.UTF8);
         string line = null;
@@ -187,7 +187,8 @@ public class CSVManager : SingletonMonoBehaviour<CSVManager>
     /// <param name="remainingSteps">残り歩数</param>
     public void KeepPlayerData(int curretStages, int remainingSteps)
     {
-        string path = Application.dataPath + @"/08_CSV/PlayerSave.csv";
+        string path  = "Assets/08_CSV/PlayerSave.csv";
+        //string path = Application.dataPath + @"/08_CSV/PlayerSave.csv";
 
         using (StreamWriter streamWriter = new StreamWriter(path, false, Encoding.UTF8))
         {
@@ -209,6 +210,7 @@ public class CSVManager : SingletonMonoBehaviour<CSVManager>
             streamWriter.Flush();
             streamWriter.Close();
         }
+        LoadPlayerData();
     }
 
     /// <summary>
@@ -216,8 +218,8 @@ public class CSVManager : SingletonMonoBehaviour<CSVManager>
     /// </summary>
     private void InitializePlayerData()
     {
-        //string path = Resources.Load(PlayerSave);
-        string path = Path.Combine(Application.streamingAssetsPath, "CSV/PlayerSave.csv");
+        string path = "Assets/08_CSV/PlayerSave.csv";
+        //string path = Path.Combine(Application.streamingAssetsPath, "CSV/PlayerSave.csv");
         using (StreamWriter streamWriter = new StreamWriter(path, false, Encoding.UTF8))
         {
             for (int i = 0; i < playerDatas.Count; i++)
@@ -228,7 +230,7 @@ public class CSVManager : SingletonMonoBehaviour<CSVManager>
             streamWriter.Flush();
             streamWriter.Close();
         }
-        string bundleUrl = Path.Combine(Application.streamingAssetsPath, name); //StreamingAssetsのパス
+        //string bundleUrl = Path.Combine(Application.streamingAssetsPath, name); //StreamingAssetsのパス
         //AssetBundle assetBundle = AssetBundle.LoadFromFile(bundleUrl); //Asset Bundleを読み込む 
         //TextAsset csv = assetBundle.LoadAsset<TextAsset>(name); //AssetBundle内のcsvを読み込む
         /*using (StreamWriter streamWriter = new StreamWriter(bundleUrl, false, Encoding.UTF8))
