@@ -50,8 +50,8 @@ namespace StageSelectScene
         // Start is called before the first frame update
         void Start()
         {
-            posUp = new Vector3(-30.5f, 103f, 90f);
-            posDown = new Vector3(-30.5f, -96f, 90f);
+            posUp = new Vector3(-27.3f, 100.6f, 90f);
+            posDown = new Vector3(-27.3f, -88.2f, 90f);
 
             green = new Color(0f, 1f, 0f, 0.5f);
             yellow = new Color(1f, 00.92f, 0.016f, 0.5f);
@@ -92,7 +92,7 @@ namespace StageSelectScene
                 Invoke("wait", 0.28f);
             }
             Debug.Log(obj.transform.position);
-            //Sキーか下矢印で上にスクロール
+            //Sキーか下矢印で下にスクロール
             if (keyDown && checkMovingRangeDown || checkDown)
             {            
                 checkDown = true;
@@ -106,7 +106,7 @@ namespace StageSelectScene
                 Invoke("waitScUp", 0.25f);
                 obj.transform.position = posUp;
             }
-            //Sキーか下矢印で上にスクロール
+            //Sキーか下矢印で下にスクロール
             if (keyDown && !checkMovingRangeDown)
             {
                 Invoke("waitScDown", 0.25f);
@@ -128,11 +128,13 @@ namespace StageSelectScene
             if (other.name == "Stage0")
             {
                 checkMovingRangeUp = false;
+           
                             
             }
             else if (other.name == "Stage12")
             {
                 checkMovingRangeDown = false;
+              
             }
             else
             {
