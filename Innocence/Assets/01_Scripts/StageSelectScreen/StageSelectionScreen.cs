@@ -82,37 +82,46 @@ namespace StageSelectScene
             ClearEvaluations("Stage12", Score.SCORE2);*/
 
             //Debug.Log(checkMovingRangeUp);
+                Vector3 target = obj.transform.position;
 
-            //Wキーか上矢印で上にスクロール
-            if (keyUp && checkMovingRangeUp || checkUp)
+            //移動
+                obj.transform.position = Vector3.MoveTowards(obj.transform.position, target, 1.0f * Time.deltaTime);
+
+
+          
+
+            
+
+            if (obj.transform.position == target)
             {
-                checkUp = true;
+                if (keyUp && checkMovingRangeUp || checkUp)
+                {
+                    checkUp = true;
 
-                obj.transform.Translate(0f, -60f * Time.deltaTime, 0f);
-                Invoke("wait", 0.28f);
-            }
-            Debug.Log(obj.transform.position);
-            //Sキーか下矢印で下にスクロール
-            if (keyDown && checkMovingRangeDown || checkDown)
-            {            
-                checkDown = true;
+                    //target.y += -150;
+                    obj.transform.Translate(0f, -60f * Time.deltaTime, 0f);
+                    Invoke("wait", 0.28f);
+                }
 
-                obj.transform.Translate(0f, 60f * Time.deltaTime, 0f);
-                Invoke("wait", 0.28f);
-            }
-            //Wキーか上矢印で上にスクロール
-            if (keyUp && !checkMovingRangeUp)
-            {
-                Invoke("waitScUp", 0.25f);
-                obj.transform.position = posUp;
-            }
-            //Sキーか下矢印で下にスクロール
-            if (keyDown && !checkMovingRangeDown)
-            {
-                Invoke("waitScDown", 0.25f);
-                obj.transform.position = posDown;
-            }
+                if (keyDown && checkMovingRangeDown || checkDown)
+                {
+                    checkDown = true;
+                   //target.y += 150;
+                    obj.transform.Translate(0f, 60f * Time.deltaTime, 0f);
+                    Invoke("wait", 0.28f);
+                }
 
+
+                //Up
+                //target.y += 150f;
+                //Down
+                //target.y -= 150f;
+
+
+            }
+            
+                
+           
             Evaluation();
 
         }

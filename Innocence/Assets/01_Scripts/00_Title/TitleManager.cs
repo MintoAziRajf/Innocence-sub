@@ -38,21 +38,12 @@ public class TitleManager : MonoBehaviour
     void Update()
     {
         if (isTitle) return;
-        StageSelectAnimation();
         if (Input.GetButtonDown("Cancel"))
         {
             //SoundManager.instance.PlaySE(SoundManager.SE_Type.Cancel);
             isTitle = true;
             animator.SetBool("isTitle", isTitle);
         }
-    }
-
-    //選択中のステージ情報を表示
-    private void StageSelectAnimation()
-    {
-        selectedButton = eventSystem.currentSelectedGameObject;
-        if (selectedButton == null) return;
-        stageInfo.SelectingStage(int.Parse(selectedButton.name));
     }
 
     //決定音
