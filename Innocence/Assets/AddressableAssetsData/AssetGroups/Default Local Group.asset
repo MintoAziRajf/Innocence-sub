@@ -17,6 +17,12 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 4b8ecc20c5963b4448668cdb407d4a3c
   m_SerializeEntries:
+  - m_GUID: 025bbfc1d53030f4e9198b27fd53e820
+    m_Address: Assets/08_CSV/battle_3.csv
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: 05ce6846e6d530e4bb82f54e3d0743f3
     m_Address: Assets/StoryFile/CSV/Epilogue4ClearState.csv
     m_ReadOnly: 0
@@ -29,8 +35,50 @@ MonoBehaviour:
     m_SerializedLabels: []
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
+  - m_GUID: 15fa1de3b1501c24aa74f6bf01dd4d0c
+    m_Address: Assets/08_CSV/map_0.csv
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 20816a62becd6a94da6f54d4c991447a
+    m_Address: Assets/08_CSV/game_3.csv
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 20b0ba3e04ed94b4cbb3a16a03d27ea0
+    m_Address: Assets/08_CSV/dialogue_0.csv
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: 23f849e94e17d2e40be5e1b2a039642e
     m_Address: Assets/StoryFile/Text/Epilogue1Start.txt
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 243c1bf589960fa44983408766cde810
+    m_Address: Assets/08_CSV/map_3.csv
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 284d9dd2332f5d34294af846fd97e4b2
+    m_Address: Assets/08_CSV/battle_0.csv
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 32ee05efed9eeec4f989b4d837f1f730
+    m_Address: Assets/08_CSV/map_5.csv
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 3e795854a3e73ad4c8656c7a76639b09
+    m_Address: Assets/08_CSV/game_0.csv
     m_ReadOnly: 0
     m_SerializedLabels: []
     m_MainAsset: {fileID: 0}
@@ -41,8 +89,20 @@ MonoBehaviour:
     m_SerializedLabels: []
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
+  - m_GUID: 4e0d5f86b6f087a4cb840d005326b450
+    m_Address: Assets/08_CSV/map_2.csv
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: 56ca646bb716db84094929ed063a8e13
     m_Address: Assets/Image/Smile.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 5e3674bb6378a0647a4eaf44e7324b33
+    m_Address: Assets/08_CSV/Master.csv
     m_ReadOnly: 0
     m_SerializedLabels: []
     m_MainAsset: {fileID: 0}
@@ -53,8 +113,32 @@ MonoBehaviour:
     m_SerializedLabels: []
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
+  - m_GUID: 7165268a70708c3489afd9ca3276201d
+    m_Address: Assets/08_CSV/map_1.csv
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 725715a1a16b32244ba4ea22907c15eb
+    m_Address: Assets/08_CSV/battle_2.csv
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: 7595e92fd9420574d8c5084382692030
     m_Address: Assets/StoryFile/CSV/Epilogue3ClaerState.csv
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 77ea9bbf79370754eafea6d92c5bdf37
+    m_Address: Assets/08_CSV/PlayerSave.csv
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 7f33e437985ef5141ae341dfbec1c85e
+    m_Address: Assets/08_CSV/dialogue_3.csv
     m_ReadOnly: 0
     m_SerializedLabels: []
     m_MainAsset: {fileID: 0}
@@ -71,8 +155,26 @@ MonoBehaviour:
     m_SerializedLabels: []
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
+  - m_GUID: 8ded8bead74ea494082468bc529c62b4
+    m_Address: Assets/08_CSV/SkillCheck.csv
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 8df2c7dfaef670049a590a557bc02661
+    m_Address: Assets/08_CSV/game_6.csv
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: 96cc3bedcd3d66649a0e44572a215274
     m_Address: Assets/StoryFile/Text/PrologueStory.txt
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 9ac969730040b504b9d31bca61d0a65c
+    m_Address: Assets/08_CSV/battle_1.csv
     m_ReadOnly: 0
     m_SerializedLabels: []
     m_MainAsset: {fileID: 0}
@@ -101,6 +203,12 @@ MonoBehaviour:
     m_SerializedLabels: []
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
+  - m_GUID: afdbda64dfa3080488742c643ff9b210
+    m_Address: Assets/08_CSV/game_1.csv
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: b4e52e9144c6b2a44905a07281421509
     m_Address: Assets/StoryFile/CSV/EpilogueStart4State.csv
     m_ReadOnly: 0
@@ -109,6 +217,12 @@ MonoBehaviour:
     m_TargetAsset: {fileID: 0}
   - m_GUID: b9e6eb5d11ed7294bb37c26bb767e50c
     m_Address: Assets/StoryFile/CSV/PrologueState.csv
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: c3ac2ca1906c6284eac56265876526d6
+    m_Address: Assets/08_CSV/dialogue_2.csv
     m_ReadOnly: 0
     m_SerializedLabels: []
     m_MainAsset: {fileID: 0}
@@ -131,8 +245,44 @@ MonoBehaviour:
     m_SerializedLabels: []
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
+  - m_GUID: da37a226ca0e62d47adef2500c8173fb
+    m_Address: Assets/08_CSV/game_5.csv
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: da5b8168102cf6f47ae3db7c7be80ec0
+    m_Address: Assets/08_CSV/map_4.csv
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: dccd8c30bec385844acad63e7a9f09a8
+    m_Address: Assets/08_CSV/game_4.csv
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: e6a185655bfbf384b9dd469a0f65a295
+    m_Address: Assets/08_CSV/dialogue_1.csv
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: e913677b87e1a4a4cbeb2a43808b52bc
+    m_Address: Assets/08_CSV/game_2.csv
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: f831dfc30ced78147849bd068ba90914
     m_Address: Assets/StoryFile/Text/Epilogue4Clear.txt
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: fc821a9c25da9eb459370ed5e7652eeb
+    m_Address: Assets/08_CSV/map_6.csv
     m_ReadOnly: 0
     m_SerializedLabels: []
     m_MainAsset: {fileID: 0}

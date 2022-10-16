@@ -12,6 +12,7 @@ public class EnemyController : MonoBehaviour
 
     //移動
     private Vector3 targetPos;
+    private float speed = 1f;
 
     //攻撃タイプ
     [SerializeField] private int type = 0;
@@ -21,13 +22,13 @@ public class EnemyController : MonoBehaviour
     //hp表示用
     [SerializeField] private GameObject[] hpWall = null;
     [ColorUsage(false, true)] Color firstColor = new Color(0.3f, 2.5f, 4.0f); //blue
-    [ColorUsage(false, true)] Color secondColor = new Color(0.3f, 3.0f, 0.5f);//green
-    [ColorUsage(false, true)] Color thirdColor = new Color(3.0f, 3.0f, 0.3f); //yellow
+    [ColorUsage(false, true)] Color secondColor = new Color(0.15f, 1.5f, 0.25f);//green
+    [ColorUsage(false, true)] Color thirdColor = new Color(1.5f, 1.5f, 0.15f); //yellow
     [ColorUsage(false, true)] Color fourthColor = new Color(3.0f, 0.3f, 0.3f);//red
     [ColorUsage(false, false)] Color damagedColor = new Color(0.23f, 0.23f, 0.23f);//gray
 
     //射撃
-    private float interval = 0.2f;
+    private float interval = 0.3f;
     private float time;
     private float power = 150f;
 
@@ -66,12 +67,22 @@ public class EnemyController : MonoBehaviour
         sm = GameObject.Find("ShootingManager").GetComponent<ShootingManager>();
         mGameManager = GameObject.Find("GameManager").GetComponent<MainGameManager>();
         type = mGameManager.Difficulty;
+        SetEnemyStatus();
+        
         targetPos = this.transform.position;
+    }
+
+    private void SetEnemyStatus()
+    {
+        speed = 1.0f + (type * 0.1f); //typeに応じて移動速度を変える
+        power = 150f + (type * 10f);
+        interval = 0.2f + (type * 0.02f);
     }
 
     void FixedUpdate()
     {
         if (!isStart) return;
+        SetEnemyStatus();
         //playerの方を向く
         LookAtPlayer();
         //Movement
@@ -116,8 +127,9 @@ public class EnemyController : MonoBehaviour
         }
         void Move()
         {
+            
             //移動
-            this.transform.position = Vector3.MoveTowards(transform.position, targetPos, 2.0f * Time.deltaTime);
+            this.transform.position = Vector3.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);
             //目的地についていなければ何もしない
             if (!(this.transform.position == targetPos)) return;
 
@@ -126,17 +138,26 @@ public class EnemyController : MonoBehaviour
             targetPos.z = Random.Range(-4.0f, 4.0f);
         }
 
-        void AttackTypeA() //0:追従　通常弾
+        void AttackTypeA() //追従　通常弾
         {
             angle = transform.forward;
             Shot(true);
         }
-        void AttackTypeB() //1:追従　特殊弾
+        void AttackTypeB() //3発　通常弾
         {
-            angle = transform.forward;
-            Shot(false);
+            //角度
+            Quaternion q = Quaternion.Euler(0f, -15f, 0f);
+            angle = q.normalized * transform.forward;
+            q = Quaternion.Euler(0f, 15f, 0f);
+
+            //射撃
+            for (int i = 0; i < 3; i++)
+            {
+                Shot(true);
+                angle = q.normalized * angle;
+            }
         }
-        void AttackTypeC() //2:追従　弾交互
+        void AttackTypeC() //追従　弾交互
         {
             angle = transform.forward;
             //弾の生成・発射
@@ -145,11 +166,11 @@ public class EnemyController : MonoBehaviour
             //弾切り替え
             isDefault = !isDefault;
         }
-        void AttackTypeD() //3:回転　弾種交互
+        void AttackTypeD() //回転　弾交互
         {
             //角度
             Quaternion q = Quaternion.Euler(0f, 45f, 0f);
-            Quaternion q2 = Quaternion.Euler(0f, 3f, 0f);
+            Quaternion q2 = Quaternion.Euler(0f, 30f, 0f);
             //初弾の角度
             angleForward = q2.normalized * angleForward;
             angle = angleForward;
@@ -161,7 +182,22 @@ public class EnemyController : MonoBehaviour
                 Shot(isDefault);
             }
         }
-        void AttackTypeE() //4:回転　特殊弾のみ
+        void AttackTypeE() //トリニティ　交互
+        {
+            //角度
+            Quaternion q = Quaternion.Euler(0f, -45f, 0f);
+            angle = q.normalized * transform.forward;
+            q = Quaternion.Euler(0f, 15f, 0f);
+
+            //射撃
+            for (int i = 0; i < 7; i++)
+            {
+                Shot(isDefault);
+                angle = q.normalized * angle;
+            }
+            isDefault = !isDefault;
+        }
+        void AttackTypeF() //回転　特殊弾のみ
         {
             //角度
             Quaternion q = Quaternion.Euler(0f, 90f, 0f);
@@ -177,63 +213,7 @@ public class EnemyController : MonoBehaviour
                 Shot(false);
             }
         }
-        void AttackTypeF() //5:トリニティ　通常弾
-        {
-            //角度
-            Quaternion q = Quaternion.Euler(0f, -45f, 0f);
-            angle = q.normalized * transform.forward;
-            q = Quaternion.Euler(0f, 45f, 0f);
-
-            //射撃
-            for (int i = 0; i < 3; i++)
-            {
-                Shot(true);
-                angle = q.normalized * angle;
-            }
-        }
-        void AttackTypeG() //6:トリニティ　特殊弾
-        {
-            //角度
-            Quaternion q = Quaternion.Euler(0f, -45f, 0f);
-            angle = q.normalized * transform.forward;
-            q = Quaternion.Euler(0f, 45f, 0f);
-
-            //射撃
-            for (int i = 0; i < 3; i++)
-            {
-                Shot(false);
-                angle = q.normalized * angle;
-            }
-        }
-        void AttackTypeH() //7:トリニティ　交互
-        {
-            //角度
-            Quaternion q = Quaternion.Euler(0f, -45f, 0f);
-            angle = q.normalized * transform.forward;
-            q = Quaternion.Euler(0f, 45f, 0f);
-
-            //射撃
-            for (int i = 0; i < 3; i++)
-            {
-                Shot(isDefault);
-                angle = q.normalized * angle;
-            }
-            isDefault = !isDefault;
-        }
-        void AttackTypeI() //8:ランダム　特殊弾
-        {
-            //角度
-            Quaternion q = Quaternion.Euler(0f, Random.Range(40f, 80f), 0f);
-            angle = q.normalized * transform.forward;
-
-            //射撃
-            for (int i = 0; i < 8; i++)
-            {
-                Shot(false);
-                angle = q.normalized * angle;
-            }
-        }
-        void AttackTypeJ() //9:ランダム　交互
+        void AttackTypeG() //ランダム　交互
         {
             //角度
             Quaternion q = Quaternion.Euler(0f, Random.Range(40f, 80f), 0f);
@@ -247,6 +227,38 @@ public class EnemyController : MonoBehaviour
                 angle = q.normalized * angle;
             }
             isDefault = !isDefault;
+        }
+        void AttackTypeH() //追従　特殊弾
+        {
+            angle = transform.forward;
+            Shot(false);
+        }
+        void AttackTypeI() //3発　特殊弾
+        {
+            //角度
+            Quaternion q = Quaternion.Euler(0f, -15f, 0f);
+            angle = q.normalized * transform.forward;
+            q = Quaternion.Euler(0f, 15f, 0f);
+
+            //射撃
+            for (int i = 0; i < 3; i++)
+            {
+                Shot(false);
+                angle = q.normalized * angle;
+            }
+        }
+        void AttackTypeJ() //ランダム　特殊弾
+        {
+            //角度
+            Quaternion q = Quaternion.Euler(0f, Random.Range(40f, 80f), 0f);
+            angle = q.normalized * transform.forward;
+
+            //射撃
+            for (int i = 0; i < 8; i++)
+            {
+                Shot(false);
+                angle = q.normalized * angle;
+            }
         }
     }
 
@@ -281,6 +293,7 @@ public class EnemyController : MonoBehaviour
         transform.rotation = Quaternion.Slerp(this.transform.rotation, rotation, speed);
     }
 
+    //弾が当たった時
     void OnTriggerEnter(Collider collider)
     {
         if (collider.CompareTag("Bullet"))
@@ -289,6 +302,9 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// ダメージを受けたときの処理
+    /// </summary>
     private void EnemyDamaged()
     {
         //HPを減らす
@@ -338,15 +354,17 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 破壊アニメーション
+    /// </summary>
     private IEnumerator DestroyAnimation()
     {
-        //animation
-        completeCanvas.SetActive(true);
-        Instantiate(destroyEffect, this.transform.position, this.transform.rotation, this.transform);
-        this.GetComponent<MeshRenderer>().enabled = false;
-        SoundManager.instance.PlaySE(SoundManager.SE_Type.S_Destroy);
+        completeCanvas.SetActive(true); //クリア画面表示　
+        Instantiate(destroyEffect, this.transform.position, this.transform.rotation, this.transform); //エフェクトを生成
+        this.GetComponent<MeshRenderer>().enabled = false; //エネミーの見た目を消す
+        SoundManager.instance.PlaySE(SoundManager.SE_Type.S_Destroy); //SE
 
-        yield return new WaitForSeconds(0.2f);
-        mGameManager.StartCoroutine("UnloadScene", true);
+        yield return new WaitForSeconds(0.2f); //クリアアニメーション表示時間待機
+        mGameManager.StartCoroutine("UnloadScene", true); //メインゲームマネージャーにクリア判定を送る
     }
 }

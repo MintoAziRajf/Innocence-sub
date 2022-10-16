@@ -67,7 +67,7 @@ public class MapCreater : MonoBehaviour
                 switch (type)
                 {
                     case TYPE.NONE:
-                        sb.Append("　");//Debug
+                        sb.Append("〇");//Debug
                         break;
                     case TYPE.WALL:
                         sb.Append("壁");//Debug

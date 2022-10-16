@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: 750ec1e0a6290cb499b1582ff3fbbf29, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 25f103bdc43b57a43805b711343916b9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -108,7 +108,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.0001, y: 0.0001}
+  m_Size: {x: 0.8, y: 0.8}
   m_EdgeRadius: 0
 --- !u!114 &6098075912499322533
 MonoBehaviour:
@@ -122,8 +122,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 923e9a5a5c33f364485e4701c797cd44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offSprite: {fileID: 21300000, guid: 750ec1e0a6290cb499b1582ff3fbbf29, type: 3}
-  onSprite: {fileID: 21300000, guid: 81f89c7ab880f874bb75cfac28cab0e9, type: 3}
+  offSprite: {fileID: 21300000, guid: 25f103bdc43b57a43805b711343916b9, type: 3}
+  onSprite: {fileID: 21300000, guid: 09d25625107054a42bde5fe053a9847a, type: 3}
 --- !u!50 &6098075912499322534
 Rigidbody2D:
   serializedVersion: 4

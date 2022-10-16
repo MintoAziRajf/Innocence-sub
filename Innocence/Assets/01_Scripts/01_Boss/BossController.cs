@@ -38,15 +38,20 @@ public class BossController : MonoBehaviour
 
     void Awake()
     {
+        //BGM
+        SoundManager.instance.PlayBGM(SoundManager.BGM_Type.Battle);
         //CSVManagerからステージの情報を受け取る
         csvManager = GameObject.Find("CSVManager").GetComponent<CSVManager>();
         bossDatas = csvManager.MainDatas;
         serifDatas = csvManager.SubDatas;
-        GameObject.Find("Player").GetComponent<PlayerController>().Steps = int.Parse(bossDatas[1][5]); //bossデータから歩数を持ってくる
+        Debug.Log(bossDatas[1][5]);
+        GameObject.Find("Player").GetComponent<PlayerController>().Steps = 24; //bossデータから歩数を持ってくるint.Parse(bossDatas[0][5])
+
+        StartCoroutine(BattleStart());
     }
 
-    //BattleStartAnimation<Script>から呼び出される
-    public IEnumerator BattleStart()
+    //バトル開始
+    private IEnumerator BattleStart()
     {
         attackCount = bossDatas.Count;
         Debug.Log(attackCount);
@@ -55,13 +60,14 @@ public class BossController : MonoBehaviour
         {
             yield return new WaitForSeconds(frame);
         }
-        bossText.text = serifDatas[1][0];
+        bossText.text = serifDatas[0][0];
         //攻撃loop
-        for (int i = startWave; i < attackCount; i++)
+        for (int i = 1; i < attackCount; i++)
         {
             //攻撃
             Attack(i);
             //攻撃クールタイム
+            Debug.Log((bossDatas[i][4]));
             for (int j = 0; j < int.Parse(bossDatas[i][4]); j++)
             {
                 yield return new WaitForSeconds(frame);
@@ -70,15 +76,15 @@ public class BossController : MonoBehaviour
             if (i == (bossDatas.Count / 4))
             {
                 bossSprite.sprite = bossEmote[0];
-                bossText.text = serifDatas[2][0];
+                bossText.text = serifDatas[1][0];
             }
             if (i == (bossDatas.Count / 2))
             {
                 bossSprite.sprite = bossEmote[1];
-                bossText.text = serifDatas[3][0];
+                bossText.text = serifDatas[2][0];
             }
         }
-        bossText.text = serifDatas[4][0];
+        bossText.text = serifDatas[3][0];
         //ゴールをアクティブにする
         yield return new WaitForSeconds(0.5f);
         goalObj.SetActive(true);
