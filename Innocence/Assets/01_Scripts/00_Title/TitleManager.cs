@@ -11,14 +11,9 @@ public class TitleManager : MonoBehaviour
     //タイトルかステージセレクトか
     private bool isTitle = true;
 
-    //ステージセレクト用
     //EventSystem
-    [SerializeField] private EventSystem eventSystem = null;
-    //選択中のオブジェクト
-    private GameObject selectedButton;
-    //ステージ情報
-    StageInfo stageInfo;
-
+    private EventSystem eventSystem = null;
+    private bool isFirst = true;
     //ステージ遷移プレハブ
     [SerializeField] private GameObject loadPrefab = null;
 
@@ -27,17 +22,15 @@ public class TitleManager : MonoBehaviour
 
     void Start()
     {
-        stageInfo = GetComponent<StageInfo>();
         csvManager = GameObject.Find("CSVManager").GetComponent<CSVManager>();
         SoundManager.instance.PlayBGM(SoundManager.BGM_Type.Title);
         animator = GetComponent<Animator>();
         animator.SetBool("isTitle", true);
-        animator.SetInteger("stageNum", 0);
     }
 
     void Update()
     {
-        if (isTitle) return;
+        if (isTitle) return;　//タイトル画面の時は何もしない
         if (Input.GetButtonDown("Cancel"))
         {
             //SoundManager.instance.PlaySE(SoundManager.SE_Type.Cancel);
@@ -55,22 +48,29 @@ public class TitleManager : MonoBehaviour
     //ステージ 1
     public void PushNewGame()
     {
-        SelectSubmit();
-        animator.SetTrigger("selectNewGame");
-        LoadScene(0);
+        if (!isFirst) return; //一度目のみ動作させる
+        isFirst = false; 
+        SelectSubmit();  //SE
+        StartCoroutine(LoadNewGame());
     }
+    private IEnumerator LoadNewGame()
+    {
+        animator.SetTrigger("selectNewGame"); //アニメーション起動
+        yield return new WaitForSeconds(0.5f);//アニメーション表示時間待機(0.5秒)
+        LoadScene(0); //1ステージ目をロードする
+    }
+
     //ステージセレクト
     public void PushStageSelect()
     {
-        SelectSubmit();
+        SelectSubmit(); //SE
         isTitle = false;
         animator.SetBool("isTitle", isTitle);
     }
     //ステージ 選択
     public void PushStage(int num)
     {
-        animator.SetTrigger("selectedStage");
-        SoundManager.instance.PlaySE(SoundManager.SE_Type.Submit);
+        //animator.SetTrigger("selectedStage");
         SelectSubmit();
         LoadScene(num);
     }
@@ -78,27 +78,28 @@ public class TitleManager : MonoBehaviour
     //シーン遷移
     private void LoadScene(int num)
     {
-        csvManager.Stages = num;
-        csvManager.LoadGame();
+        csvManager.Stages = num; //ステージ数をCSVManagerに送る
+        csvManager.LoadGame();　//指定したステージをロードする
     }
 
     //クレジットシーン表示
     public void PushCredit()
     {
+        if (!isFirst) return;
+        isFirst = false;
         SelectSubmit();
         StartCoroutine(LoadCredit());
     }
     private IEnumerator LoadCredit()
     {
-        yield return new WaitForSeconds(0.5f);
+        animator.SetTrigger("selectCredit"); //アニメーション起動
+        yield return new WaitForSeconds(0.5f);//アニメーション表示時間待機(0.5秒)
+        //クレジットシーンをロード
         GameObject SceneLoader = Instantiate(loadPrefab);
         Loading loading = SceneLoader.GetComponent<Loading>();
         loading.StartCoroutine("SceneLoading", "06_Credits");
     }
 
     //ゲーム終了
-    public void ExitGame()
-    {
-        Application.Quit();
-    }
+    public void ExitGame() => Application.Quit();
 }

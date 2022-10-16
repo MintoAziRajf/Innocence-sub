@@ -62,11 +62,6 @@ public class CSVManager : SingletonMonoBehaviour<CSVManager>
     /// </summary>
     private void LoadMasterDate()
     {
-        string bundleUrl = Path.Combine(Application.streamingAssetsPath, "datas"); //StreamingAssetsのパス
-        if(assetBundle == null)
-        {
-            assetBundle = AssetBundle.LoadFromFile(bundleUrl); //Asset Bundleを読み込む 
-        }
         LoadCSV("master", masterDatas, true);
         Debug.Log("master.csvを読み込みました。");
     }
@@ -79,6 +74,7 @@ public class CSVManager : SingletonMonoBehaviour<CSVManager>
     /// <param name="b">csvの一行目をスキップするか</param>
     private void LoadCSV(string name, List<string[]> datas, bool b)
     {
+        /*
         datas.Clear();        
         TextAsset csv = assetBundle.LoadAsset<TextAsset>(name); //AssetBundle内のcsvを読み込む
         StringReader reader = new StringReader(csv.text);
@@ -88,7 +84,18 @@ public class CSVManager : SingletonMonoBehaviour<CSVManager>
         {
             line = reader.ReadLine(); // 一行ずつ読み込み
             datas.Add(line.Split(',')); // , 区切りでリストに追加
+        }*/
+
+        datas.Clear();
+        string path = Path.Combine("Assets/08_CSV/" + name + ".csv");
+        StreamReader csv = new StreamReader(path, Encoding.UTF8);
+        string line = null;
+        if (b) line = csv.ReadLine(); //bがtrueなら一行目をスキップする
+        while ((line = csv.ReadLine()) != null)
+        {
+            datas.Add(line.Split(','));
         }
+        csv.Close();
     }
 
     /// <summary>
@@ -112,7 +119,7 @@ public class CSVManager : SingletonMonoBehaviour<CSVManager>
             LoadCSV(masterDatas[i][3], subDatas[i], true);
         }
         //ミニゲームのデータを読み込む
-        LoadCSV("skillcheck", skillCheckDatas, true);
+        LoadCSV("SkillCheck", skillCheckDatas, true);
         Debug.Log("全てのCSVを読み込みました。");
     }
 
@@ -125,7 +132,8 @@ public class CSVManager : SingletonMonoBehaviour<CSVManager>
     /// </summary>
     public void LoadGame()
     {
-        if(stages == masterDatas.Count)
+        Debug.Log("cc");
+        if (stages == masterDatas.Count)
         {
             Debug.Log("stagesが" + stages + "なので、エンドシーンをロードします。");
             GameObject SceneLoader = Instantiate(loadPrefab);
@@ -151,6 +159,7 @@ public class CSVManager : SingletonMonoBehaviour<CSVManager>
             loading.StartCoroutine("SceneLoading", "01_MainGame");
         }
     }
+
     /// <summary>
     /// プレイヤーデータ関連
     /// </summary>
@@ -160,24 +169,13 @@ public class CSVManager : SingletonMonoBehaviour<CSVManager>
     {
         get { return playerDatas; }
     }
+
     /// <summary>
     /// プレイヤーデータのロード
     /// </summary>
     private void LoadPlayerData()
     {
-        playerDatas.Clear();
-        //LoadCSV("playersave", playerDatas, false);
-
-        string path = Path.Combine(Application.streamingAssetsPath, "CSV/PlayerSave.csv");
-        //string path = Resources.Load(PlayerSave);
-        StreamReader csv = new StreamReader(path, Encoding.UTF8);
-        string line = null;
-        while ((line = csv.ReadLine()) != null)
-        {
-            playerDatas.Add(line.Split(','));
-        }
-        csv.Close();
-        Debug.Log(playerDatas[0][0]);
+        LoadCSV("PlayerSave", playerDatas, false);
     }
 
     /// <summary>
@@ -187,7 +185,7 @@ public class CSVManager : SingletonMonoBehaviour<CSVManager>
     /// <param name="remainingSteps">残り歩数</param>
     public void KeepPlayerData(int curretStages, int remainingSteps)
     {
-        string path = Application.dataPath + @"/08_CSV/PlayerSave.csv";
+        string path = Path.Combine("Assets/08_CSV/" + "PlayerSave" + ".csv");
 
         using (StreamWriter streamWriter = new StreamWriter(path, false, Encoding.UTF8))
         {
@@ -228,20 +226,6 @@ public class CSVManager : SingletonMonoBehaviour<CSVManager>
             streamWriter.Flush();
             streamWriter.Close();
         }
-        string bundleUrl = Path.Combine(Application.streamingAssetsPath, name); //StreamingAssetsのパス
-        //AssetBundle assetBundle = AssetBundle.LoadFromFile(bundleUrl); //Asset Bundleを読み込む 
-        //TextAsset csv = assetBundle.LoadAsset<TextAsset>(name); //AssetBundle内のcsvを読み込む
-        /*using (StreamWriter streamWriter = new StreamWriter(bundleUrl, false, Encoding.UTF8))
-        {
-            //Debug.Log(playerDatas.Count);
-            for (int i = 0; i < playerDatas.Count; i++)
-            {
-                streamWriter.Write("F,C");
-                streamWriter.WriteLine();
-            }
-            streamWriter.Flush();
-            streamWriter.Close();
-        }*/
         LoadPlayerData();
     }
 

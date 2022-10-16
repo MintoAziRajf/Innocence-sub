@@ -31,16 +31,16 @@ public class Result : MonoBehaviour
     /// <param name="remainingSteps">残り歩数</param>
     public void ResultData(int remainingSteps)
     {
-        RANK rank = CheckRank(remainingSteps);
-        anim.SetInteger("Rank",(int)rank);
+        RANK rank = CheckRank(remainingSteps); 　　　 //ランク判定
+        anim.SetInteger("Rank",(int)rank); 　　　　   //ランクに応じたアニメーション起動
+        rankImage.sprite = rankSprite[(int)rank];     //ランクに応じてrankSprite[]を表示
+        rankImage_sub.sprite = rankSprite[(int)rank]; //ランクに応じてrankSprite[]を表示
+
         missionImage[0].sprite = successSprite; //星１
         if (rank == RANK.GOOD) return;
         missionImage[1].sprite = successSprite; //星２
         if (rank == RANK.GREAT) return;
         missionImage[2].sprite = successSprite; //星３
-
-        rankImage.sprite = rankSprite[(int)rank]; //ランクに応じてrankSprite[]を表示
-        rankImage_sub.sprite = rankSprite[(int)rank]; //ランクに応じてrankSprite[]を表示
     }
 
     /// <summary>

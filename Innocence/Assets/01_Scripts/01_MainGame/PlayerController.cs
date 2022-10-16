@@ -249,6 +249,7 @@ public class PlayerController : MonoBehaviour
                 //anim
                 collider.GetComponent<Animator>().SetTrigger("Goal");
             }
+            Debug.Log("ステージをクリアしました。");
             //playerの動き停止
             isStart = false;
             //次のステージへ進む

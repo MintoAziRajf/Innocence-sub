@@ -134,7 +134,9 @@ public class MainGameManager : SingletonMonoBehaviour<MainGameManager>
         //CSVManagerに次のステージ数を渡す
         csvManager.Stages = csvManager.Stages + 1;
         yield return new WaitForSeconds(3.0f); //result表示中待機
+        Debug.Log("aa");
         yield return new WaitWhile(() => !Input.GetKeyDown(KeyCode.Space)); //待機後Spaceキーで次のステージへ
+        Debug.Log("bb");
         csvManager.LoadGame();
     }
 
@@ -234,7 +236,7 @@ public class MainGameManager : SingletonMonoBehaviour<MainGameManager>
         isCompleted = false;
         //ミニゲームクリアフラグの初期化
         isClear = false;
-        Debug.Log(sceneName);
+        Debug.Log(sceneName + "をロードしました。");
     }
     //ミニゲームシーンのアンロード
     public IEnumerator UnloadScene(bool b)
