@@ -24,7 +24,7 @@ namespace StageSelectScene
         [SerializeField] AudioSource audioSource;
         [SerializeField] AudioClip audioClip;
 
-        [SerializeField] GameObject obj, ClearEvaluation00, ClearEvaluation01, ClearEvaluation02;
+        [SerializeField] GameObject ClearEvaluation00, ClearEvaluation01, ClearEvaluation02;
 
         [SerializeField] GameObject[] stagesRed = new GameObject[13];
 
@@ -37,122 +37,30 @@ namespace StageSelectScene
         [SerializeField] Image levelImages;
         [SerializeField] Text stamina;
 
-        bool checkUp = false;
-        bool checkDown = false;
-        bool checkMovingRangeUp;
-        bool checkMovingRangeDown;
         static string names;
         static Score clearAchievements;
         Color green, yellow, red,purple;
-        Vector3 posDown,posUp;
-
 
         // Start is called before the first frame update
         void Start()
         {
-            posUp = new Vector3(-27.3f, 100.6f, 90f);
-            posDown = new Vector3(-27.3f, -88.2f, 90f);
-
             green = new Color(0f, 1f, 0f, 0.5f);
             yellow = new Color(1f, 00.92f, 0.016f, 0.5f);
             red = new Color(1f, 0f, 0f, 0.5f);
             purple = new Color(0.5f, 0f, 0.5f, 0.5f);
-         
         }
 
         // Update is called once per frame
         void Update()
         {
-            bool keyUp = (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow));
-            bool keyDown = (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow));
-
-            
-            /*ClearEvaluations("Stage0", Score.SCORE0);
-            ClearEvaluations("Stage1", Score.SCORE1);
-            ClearEvaluations("Stage2", Score.SCORE2);
-            ClearEvaluations("Stage3", Score.SCORE3);
-            ClearEvaluations("Stage4", Score.SCORE1);
-            ClearEvaluations("Stage5", Score.SCORE3);
-            ClearEvaluations("Stage6", Score.SCORE2);
-            ClearEvaluations("Stage7", Score.SCORE1);
-            ClearEvaluations("Stage8", Score.SCORE0);
-            ClearEvaluations("Stage9", Score.SCORE1);
-            ClearEvaluations("Stage10", Score.SCORE2);
-            ClearEvaluations("Stage11", Score.SCORE3);
-            ClearEvaluations("Stage12", Score.SCORE2);*/
-
-            //Debug.Log(checkMovingRangeUp);
-                Vector3 target = obj.transform.position;
-
-            //移動
-                obj.transform.position = Vector3.MoveTowards(obj.transform.position, target, 1.0f * Time.deltaTime);
-
-
-          
-
-            
-
-            if (obj.transform.position == target)
-            {
-                if (keyUp && checkMovingRangeUp || checkUp)
-                {
-                    checkUp = true;
-
-                    //target.y += -150;
-                    obj.transform.Translate(0f, -60f * Time.deltaTime, 0f);
-                    Invoke("wait", 0.28f);
-                }
-
-                if (keyDown && checkMovingRangeDown || checkDown)
-                {
-                    checkDown = true;
-                   //target.y += 150;
-                    obj.transform.Translate(0f, 60f * Time.deltaTime, 0f);
-                    Invoke("wait", 0.28f);
-                }
-
-
-                //Up
-                //target.y += 150f;
-                //Down
-                //target.y -= 150f;
-
-
-            }
-            
-                
-           
             Evaluation();
-
         }
-
-        void waitScUp() => checkMovingRangeUp = true;
-        void waitScDown() => checkMovingRangeDown = true;
-        
 
         void OnTriggerEnter2D(Collider2D other)
         {
             audioSource.PlayOneShot(audioClip);
-
-            if (other.name == "Stage0")
-            {
-                checkMovingRangeUp = false;
-           
-                            
-            }
-            else if (other.name == "Stage12")
-            {
-                checkMovingRangeDown = false;
-              
-            }
-            else
-            {
-                checkMovingRangeUp = true;
-                checkMovingRangeDown = true;
-            }
         }
-
-        void OnTriggerStay2D(Collider2D other)
+            void OnTriggerStay2D(Collider2D other)
         {
 
             names = other.name;
@@ -178,7 +86,6 @@ namespace StageSelectScene
 
                     stagesRed[i].SetActive(true);
 
-
                 }
                 else
                 {
@@ -187,12 +94,6 @@ namespace StageSelectScene
             }
 
         }
-        void wait()
-        {
-            checkUp = false;
-            checkDown = false;
-        }
-
         
         //引数の内容（ステージ名：例 "stage01"など クリア実績数：SCORE1,2,3）
         public static void ClearEvaluations(string StageName, Score ClearAchievements)

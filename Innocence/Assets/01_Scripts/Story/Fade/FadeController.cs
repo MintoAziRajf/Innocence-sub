@@ -59,7 +59,7 @@ public class FadeController : MonoBehaviour
 		alfa += fadeSpeed;         // 不透明度を徐々にあげる
 		SetAlpha();               // 変更した透明度をパネルに反映する
 		if (alfa >= 1)
-		{             // d)完全に不透明になったら処理を抜ける
+		{             // 完全に不透明になったら処理を抜ける
 			isFadeIn = false;
 		}
 	}

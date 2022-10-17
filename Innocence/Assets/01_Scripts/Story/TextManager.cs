@@ -52,9 +52,11 @@ namespace NTextManager
         protected List<string> texts = new List<string>();
         //csvファイル読み込み用
         List<string[]> csvDatas = new List<string[]>();
+
         //キャラクターの画像をフェード処理するため
         [SerializeField]
-        FadeController chara_leftFade, chara_rightFade;
+        FadeController chara_leftFade,chara_rightFade;
+
         //ファイルのパス
         [SerializeField] string textPath, csvPath;
 
@@ -85,8 +87,8 @@ namespace NTextManager
        
         protected virtual void Start()
         {
-            chara_leftFade.isFadeIn = false;
-            chara_rightFade.isFadeIn = false;
+            //chara_leftFade.isFadeIn = true;
+            //chara_rightFade.isFadeIn = true;
             check = true;
             reCheck = true;
             whenInvokeBegins = false;
@@ -198,8 +200,7 @@ namespace NTextManager
             else NextLineWhenSpaceButton();
 
             PersonTalking();
-            DisplayedOnTheLeft();
-            DisplayedOnTheRight();
+            StartCoroutine(wait());
             ImageState();
         }
 
@@ -291,19 +292,12 @@ namespace NTextManager
             }
         }
 
-        //左側の表示
-        protected void DisplayedOnTheLeft()
+        IEnumerator wait()//画像の読み込み待ちの為
         {
+            yield return new WaitForSeconds(0.1f);
             FadeIn();
-            FadeOut();
+            FadeOut();           
         }
-        //右側の表示
-        protected void DisplayedOnTheRight()
-        {
-            FadeIn();
-            FadeOut();
-        }
-
 
         void FadeIn()
         {
@@ -356,9 +350,9 @@ namespace NTextManager
             ImageLoading(csvDatas[currentLineNum][3] == "2",WhoDisplayed1, "Assets/Image/ScaredExpression.png");
 
             //看守の画像
-            ImageLoading(csvDatas[currentLineNum][4] == "0",WhoDisplayed2, "Assets/Image/Smile.png");
-            ImageLoading(csvDatas[currentLineNum][4] == "1",WhoDisplayed2, "Assets/Image/SilentExpression.png");
-            ImageLoading(csvDatas[currentLineNum][4] == "2",WhoDisplayed2, "Assets/Image/ScaredExpression.png");
+            ImageLoading(csvDatas[currentLineNum][4] == "0",WhoDisplayed2, "Assets/Image/jailer_Stirup.png");
+            ImageLoading(csvDatas[currentLineNum][4] == "1",WhoDisplayed2, "Assets/Image/jailer_Normal.png");
+            ImageLoading(csvDatas[currentLineNum][4] == "2",WhoDisplayed2, "Assets/Image/jailer_Impatience.png");
 
         }
 
