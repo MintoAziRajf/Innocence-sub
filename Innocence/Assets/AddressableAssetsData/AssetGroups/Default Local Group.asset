@@ -23,6 +23,12 @@ MonoBehaviour:
     m_SerializedLabels: []
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
+  - m_GUID: 093020fe4d8a0a645a56bdc4e547f8d3
+    m_Address: Assets/Image/jailer_Impatience.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: 0995eca5d5ee7084eb6bea7ec2df83c6
     m_Address: Assets/StoryFile/CSV/Epilogue2ClaerState.csv
     m_ReadOnly: 0
@@ -31,6 +37,12 @@ MonoBehaviour:
     m_TargetAsset: {fileID: 0}
   - m_GUID: 23f849e94e17d2e40be5e1b2a039642e
     m_Address: Assets/StoryFile/Text/Epilogue1Start.txt
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 25c214ea8542eba48b410f2b79af8780
+    m_Address: Assets/Image/jailer_Normal.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     m_MainAsset: {fileID: 0}
@@ -133,6 +145,12 @@ MonoBehaviour:
     m_TargetAsset: {fileID: 0}
   - m_GUID: f831dfc30ced78147849bd068ba90914
     m_Address: Assets/StoryFile/Text/Epilogue4Clear.txt
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: f8d03018e74fa754b8d948f3ee1b6622
+    m_Address: Assets/Image/jailer_Stirup.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     m_MainAsset: {fileID: 0}
