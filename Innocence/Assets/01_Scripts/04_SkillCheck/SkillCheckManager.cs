@@ -7,7 +7,7 @@ public class SkillCheckManager : MiniGameMonoBehaviour
 {
     //Debug
     public int debugDiff = 0;
-
+    public bool isDebug = false;
     //GameManager
     MainGameManager mGameManager;
     SkillCheckController scc;
@@ -56,11 +56,17 @@ public class SkillCheckManager : MiniGameMonoBehaviour
 
     void OnEnable()
     {
-        mGameManager = GameObject.Find("GameManager").GetComponent<MainGameManager>();
         csvManager = GameObject.Find("CSVManager").GetComponent<CSVManager>();
-        gameInfo = csvManager.SkillCheckInfo(mGameManager.Difficulty);
         scc = GameObject.Find("Player").GetComponent<SkillCheckController>();
-        //gameInfo = csvManager.SkillCheckInfo(debugDiff);
+        if (!isDebug)
+        {
+            mGameManager = GameObject.Find("GameManager").GetComponent<MainGameManager>();
+            gameInfo = csvManager.SkillCheckInfo(mGameManager.Difficulty);
+        }
+        else
+        {
+            gameInfo = csvManager.SkillCheckInfo(debugDiff);
+        }
         SetDifficulty();
         CreateNode();
         StartCoroutine(StartDelay());

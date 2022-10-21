@@ -35,6 +35,7 @@ public class SkillCheckController : MonoBehaviour
     // 移動関連
     private GameObject playerVisual = null; //見た目を回転させる用
     private GameObject mCamera = null; //カメラ移動用
+    [SerializeField] private Transform cameraLookAt = null; //カメラの視先
     private float speed = -10f; //回転速度(何秒かけるか)
 
     //ステージの中心
@@ -52,14 +53,17 @@ public class SkillCheckController : MonoBehaviour
         mCamera = Camera.main.gameObject;
         //ステージの中心を取得
         center = skillCheckManager.Center;
+        LookAtThis(cameraLookAt.position, mCamera.transform);
     }
 
     void Update()
     {
         if (!isStart) return;
-        LookCenter();
+        LookAtThis(center, this.transform);
+        LookAtThis(cameraLookAt.position, mCamera.transform);
         RotatePosition(this.transform);
         RotatePosition(mCamera.transform);
+        RotatePosition(cameraLookAt);
         RotatePlayer();
         PlayerControll();
     }
@@ -71,7 +75,7 @@ public class SkillCheckController : MonoBehaviour
             if (energy == 0)
             {
                 //空撃ちのような音
-
+                Debug.Log("SkillCheck:空撃ち");
                 return;
             }
             //回数消費
@@ -153,13 +157,13 @@ public class SkillCheckController : MonoBehaviour
     /// <summary>
     /// 中心を向く
     /// </summary>
-    private void LookCenter()
+    private void LookAtThis(Vector3 targetPos, Transform player)
     {
         // 中心へ方向
-        Vector3 relativePos = center - this.transform.position;
+        Vector3 relativePos = targetPos - player.position;
         // 方向を、回転情報に変換
         Quaternion rotation = Quaternion.LookRotation(relativePos);
         // 現在の回転情報と、ターゲット方向の回転情報を補完する
-        this.transform.rotation = rotation;
+        player.rotation = rotation;
     }
 }

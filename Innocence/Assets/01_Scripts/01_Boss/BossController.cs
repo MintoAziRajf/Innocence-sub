@@ -44,8 +44,8 @@ public class BossController : MonoBehaviour
         csvManager = GameObject.Find("CSVManager").GetComponent<CSVManager>();
         bossDatas = csvManager.MainDatas;
         serifDatas = csvManager.SubDatas;
-        Debug.Log(bossDatas[1][5]);
-        GameObject.Find("Player").GetComponent<PlayerController>().Steps = 24; //bossデータから歩数を持ってくるint.Parse(bossDatas[0][5])
+        Debug.Log("歩数 : "+ bossDatas[1][5]);
+        GameObject.Find("Player").GetComponent<PlayerController>().Steps = int.Parse(bossDatas[1][5]); //bossデータから歩数を持ってくるint.Parse(bossDatas[0][5])
 
         StartCoroutine(BattleStart());
     }
@@ -54,7 +54,7 @@ public class BossController : MonoBehaviour
     private IEnumerator BattleStart()
     {
         attackCount = bossDatas.Count;
-        Debug.Log(attackCount);
+        Debug.Log("Boss攻撃回数 : " + attackCount);
         //初期待機時間
         for (int i = 0; i < startDelay; i++)
         {
@@ -67,7 +67,7 @@ public class BossController : MonoBehaviour
             //攻撃
             Attack(i);
             //攻撃クールタイム
-            Debug.Log((bossDatas[i][4]));
+            Debug.Log("攻撃クールタイム : " + bossDatas[i][4] + "f");
             for (int j = 0; j < int.Parse(bossDatas[i][4]); j++)
             {
                 yield return new WaitForSeconds(frame);

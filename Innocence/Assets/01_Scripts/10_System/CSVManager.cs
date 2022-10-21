@@ -51,7 +51,16 @@ public class CSVManager : SingletonMonoBehaviour<CSVManager>
     }
     void Awake()
     {
-        DontDestroyOnLoad(this.gameObject);
+        // シングルトンかつ、シーン遷移しても破棄されないようにする
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
         LoadMasterDate();
         LoadPlayerData();
         LoadAllCSV();
@@ -132,7 +141,6 @@ public class CSVManager : SingletonMonoBehaviour<CSVManager>
     /// </summary>
     public void LoadGame()
     {
-        Debug.Log("cc");
         if (stages == masterDatas.Count)
         {
             Debug.Log("stagesが" + stages + "なので、エンドシーンをロードします。");

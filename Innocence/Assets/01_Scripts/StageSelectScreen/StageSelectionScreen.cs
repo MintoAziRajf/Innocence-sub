@@ -41,6 +41,11 @@ namespace StageSelectScene
         static Score clearAchievements;
         Color green, yellow, red,purple;
 
+        //追加
+        private int stage;
+        [SerializeField] private GameObject UIManager = null;
+        TitleManager titleManager;
+
         // Start is called before the first frame update
         void Start()
         {
@@ -48,6 +53,8 @@ namespace StageSelectScene
             yellow = new Color(1f, 00.92f, 0.016f, 0.5f);
             red = new Color(1f, 0f, 0f, 0.5f);
             purple = new Color(0.5f, 0f, 0.5f, 0.5f);
+
+            titleManager = UIManager.GetComponent<TitleManager>();
         }
 
         // Update is called once per frame
@@ -70,6 +77,7 @@ namespace StageSelectScene
             {
                 if (other.name == "Stage" + i)
                 {
+                    stage = i;
                     title.text = titles[i].text;
 
 
@@ -93,6 +101,10 @@ namespace StageSelectScene
                 }
             }
 
+            if (Input.GetButtonDown("Submit"))
+            {
+                titleManager.PushStage(stage);
+            }
         }
         
         //引数の内容（ステージ名：例 "stage01"など クリア実績数：SCORE1,2,3）
