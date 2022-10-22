@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Dynamic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,8 +14,7 @@ namespace StageSelectScene
     interface IClearEvaluation
     {
         
-      //  void ClearEvaluations(string StageName, Score ClearAchievements);
-      
+      //  void ClearEvaluations(string StageName, Score ClearAchievements);     
     }
 
     [RequireComponent(typeof(AudioSource))]
@@ -37,10 +37,12 @@ namespace StageSelectScene
         [SerializeField] Image levelImages;
         [SerializeField] Text stamina;
 
-        static string names;
+        private string names;
         static Score clearAchievements;
         Color green, yellow, red,purple;
 
+        public string Names => names;
+          
         // Start is called before the first frame update
         void Start()
         {
@@ -96,10 +98,10 @@ namespace StageSelectScene
         }
         
         //引数の内容（ステージ名：例 "stage01"など クリア実績数：SCORE1,2,3）
-        public static void ClearEvaluations(string StageName, Score ClearAchievements)
+       /* public static void ClearEvaluations(string StageName, Score ClearAchievements)
         {
           if (StageName == names) clearAchievements = ClearAchievements;            
-        }
+        }*/
 
         
         private void Evaluation()
@@ -135,5 +137,6 @@ namespace StageSelectScene
                     break;
             }
         }
-    }
+    
+    }  
 }

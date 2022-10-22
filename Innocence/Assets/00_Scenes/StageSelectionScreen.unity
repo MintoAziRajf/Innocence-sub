@@ -2983,6 +2983,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obj: {fileID: 386091108}
+  stage: {fileID: 1608943513}
   speed: 100
 --- !u!1 &392649748
 GameObject:
@@ -8848,7 +8849,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 1608943512}
   audioClip: {fileID: 8300000, guid: 28b6260168a506549a9bdffe12d97223, type: 3}
-  obj: {fileID: 386091108}
   ClearEvaluation00: {fileID: 1574100940}
   ClearEvaluation01: {fileID: 1919118276}
   ClearEvaluation02: {fileID: 2087242610}
