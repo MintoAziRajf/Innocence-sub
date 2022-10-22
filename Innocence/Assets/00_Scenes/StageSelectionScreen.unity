@@ -6258,7 +6258,7 @@ GameObject:
   - component: {fileID: 1198007132}
   - component: {fileID: 1198007131}
   m_Layer: 0
-  m_Name: Title1
+  m_Name: Title0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7231,6 +7231,80 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1342024027}
   m_CullTransparentMesh: 0
+--- !u!1 &1345979008
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1345979010}
+  - component: {fileID: 1345979009}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1345979009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1345979008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 331b9d6286975bd4a9781a572e8ef7fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  csvPath: Assets/StoryFile/CSV/test.csv
+  playerSave: Assets/08_CSV/PlayerSave.csv
+  StageTitles:
+  - {fileID: 1152389195}
+  - {fileID: 382402688}
+  - {fileID: 1534794368}
+  - {fileID: 560656494}
+  - {fileID: 525491668}
+  - {fileID: 1389126513}
+  - {fileID: 1791967397}
+  - {fileID: 1535355019}
+  - {fileID: 18545563}
+  - {fileID: 1309133304}
+  - {fileID: 295465052}
+  - {fileID: 12919594}
+  - {fileID: 998725251}
+  Staminas:
+  - {fileID: 791583332}
+  - {fileID: 791583332}
+  - {fileID: 791583332}
+  - {fileID: 791583332}
+  - {fileID: 791583332}
+  - {fileID: 791583332}
+  - {fileID: 791583332}
+  - {fileID: 791583332}
+  - {fileID: 791583332}
+  - {fileID: 791583332}
+  - {fileID: 791583332}
+  - {fileID: 791583332}
+  - {fileID: 791583332}
+  ClearEvaluations: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+--- !u!4 &1345979010
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1345979008}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -32.2959, y: 12.393555, z: -0.5390625}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1371931936
 GameObject:
   m_ObjectHideFlags: 0
@@ -8898,6 +8972,7 @@ MonoBehaviour:
   levelTextRank: {fileID: 433140478}
   levelImages: {fileID: 1412523119}
   stamina: {fileID: 791583332}
+  csv: {fileID: 1345979009}
 --- !u!50 &1608943514
 Rigidbody2D:
   serializedVersion: 4

@@ -37,8 +37,9 @@ namespace StageSelectScene
         [SerializeField] Image levelImages;
         [SerializeField] Text stamina;
 
-        static string names;
-        static Score clearAchievements;
+        [SerializeField] RoadingCSV csv;
+        string names;
+        Score clearAchievements;
         Color green, yellow, red,purple;
 
         // Start is called before the first frame update
@@ -53,14 +54,15 @@ namespace StageSelectScene
         // Update is called once per frame
         void Update()
         {
-            Evaluation();
+            ClearEvaluations("Stage2",csv.clearEvaluations[0]);
+            Evaluation();           
         }
 
         void OnTriggerEnter2D(Collider2D other)
         {
             audioSource.PlayOneShot(audioClip);
         }
-            void OnTriggerStay2D(Collider2D other)
+        void OnTriggerStay2D(Collider2D other)
         {
 
             names = other.name;
@@ -96,7 +98,7 @@ namespace StageSelectScene
         }
         
         //引数の内容（ステージ名：例 "stage01"など クリア実績数：SCORE1,2,3）
-        public static void ClearEvaluations(string StageName, Score ClearAchievements)
+        void ClearEvaluations(string StageName, Score ClearAchievements)
         {
           if (StageName == names) clearAchievements = ClearAchievements;            
         }

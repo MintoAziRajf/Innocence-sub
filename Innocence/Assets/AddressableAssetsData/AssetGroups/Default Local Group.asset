@@ -203,6 +203,12 @@ MonoBehaviour:
     m_SerializedLabels: []
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
+  - m_GUID: a510b51e5cb693b4dbb3dc424ee3b912
+    m_Address: Assets/StoryFile/CSV/test.csv
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: aadeb2eae6425d341aa8b660f3027497
     m_Address: Assets/StoryFile/Text/Epilogue2Start.txt
     m_ReadOnly: 0
@@ -271,6 +277,12 @@ MonoBehaviour:
     m_TargetAsset: {fileID: 0}
   - m_GUID: e6a185655bfbf384b9dd469a0f65a295
     m_Address: Assets/08_CSV/dialogue_1.csv
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: e7b467de73aadd54e98233e5af6f057c
+    m_Address: Assets/StoryFile/CSV/StageTitiles&Stamina.csv
     m_ReadOnly: 0
     m_SerializedLabels: []
     m_MainAsset: {fileID: 0}
