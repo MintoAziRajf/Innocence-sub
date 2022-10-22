@@ -10,54 +10,29 @@ public class RoadingCSV : MonoBehaviour
 {
     //ファイルのパス
     [SerializeField] string csvPath,playerSave;
-    
 
+    [SerializeField] StageSelectionScreen stage;
     //csvファイル読み込み用
     List<string[]> csvDatas = new List<string[]>();
     List<string[]> playerDatas = new List<string[]>();
 
     [SerializeField]
-    Text[] StageTitles = new Text[13];
-    [SerializeField]
-    Text[] Staminas = new Text[13];
-    [SerializeField]
-    Score[] ClearEvaluations = new Score[13];
+    Text[] stageTitles = new Text[13];
 
-    public Score[] clearEvaluations => ClearEvaluations;
+    Text[] staminas = new Text[13];
+    [SerializeField] Text stamina;
+    [SerializeField]
+    Score[] clearEvaluations = new Score[13];
+
+    bool loadingCheckCsv = false;
+    bool loadingCheckPlayer = false;
+
+    public Score[] ClearEvaluations => clearEvaluations;
+    public Text[] Staminas => staminas;
     // Start is called before the first frame update
     void Start()
-    {
-
-
-
-      
-
-        StartCoroutine(Roadingcsv());
-
-        //一列目にステージのタイトル
-        //二列目にステージのスタミナ
-        //三列目にステージのクリア評価
-
-
-        /*for (int i = 0; i < 13; ++i)
-        {
-            for (int j = 0; j < 2; ++i)
-            {
-                if (i == 0) { StageTitles[i].text = csvDatas[i][j]; }
-                if (j == 1) { Staminas[i].text = csvDatas[i][j]; }
-            }
-        }
-
-        for (int i = 0; i < 11; ++i)
-        {
-            if (playerDatas[i][1] == "S") ClearEvaluations[i] = Score.SCORE3;
-            if (playerDatas[i][1] == "A") ClearEvaluations[i] = Score.SCORE2;
-            if (playerDatas[i][1] == "B") ClearEvaluations[i] = Score.SCORE1;
-            if (playerDatas[i][1] == "C") ClearEvaluations[i] = Score.SCORE0;
-
-            Debug.Log(ClearEvaluations[i]);
-        }*/
-
+    { 
+        StartCoroutine(Roadingcsv());        
     }
 
     IEnumerator Roadingcsv()
@@ -67,14 +42,15 @@ public class RoadingCSV : MonoBehaviour
 
         Addressables.LoadAssetAsync<TextAsset>(csvPath).Completed += CSVData =>
         {
-            StringReader reader = new StringReader(CSVData.Result.text);
+            StringReader readerCsv = new StringReader(CSVData.Result.text);
 
-            while (reader.Peek() != -1)
+            while (readerCsv.Peek() != -1)
             {
-                string line = reader.ReadLine();
+                string line = readerCsv.ReadLine();
                 csvDatas.Add(line.Split(','));
             }
             enabled = true;
+            loadingCheckCsv = true;
         };
 
         
@@ -82,24 +58,49 @@ public class RoadingCSV : MonoBehaviour
 
         Addressables.LoadAssetAsync<TextAsset>(playerSave).Completed += playerData =>
         {
-            StringReader reader = new StringReader(playerData.Result.text);
+            StringReader readerPlayer = new StringReader(playerData.Result.text);
 
-            while (reader.Peek() != -1)
+            while (readerPlayer.Peek() != -1)
             {
-                string line = reader.ReadLine();
+                string line = readerPlayer.ReadLine();
                 playerDatas.Add(line.Split(','));
             }
             enabled = true;
+            loadingCheckPlayer = true;
         };
 
-        yield return　new WaitForSeconds(10);
+        yield return new WaitUntil(() => loadingCheckCsv && loadingCheckPlayer);
 
-        
+       
+
+        //playersaveの二列目取得
+        for (int i = 1; i < 12; ++i)
+        {
+            if (playerDatas[i - 1][1] == "S") clearEvaluations[i] = Score.SCORE3;
+            else if (playerDatas[i - 1][1] == "A") clearEvaluations[i] = Score.SCORE2;
+            else if (playerDatas[i - 1][1] == "B") clearEvaluations[i] = Score.SCORE1;
+            else if (playerDatas[i - 1][1] == "C") clearEvaluations[i] = Score.SCORE0;
+            else clearEvaluations[i - 1] = Score.SCORE0;
+
+           
+        }
+
     }
     // Update is called once per frame
     void Update()
     {
-        
+        //一列目にステージのタイトル
+        //二列目にステージのスタミナ
+
+        for (int i = 0; i < 13; ++i)
+        {
+            for (int j = 0; j < 2; ++j)
+            {
+
+                if (j == 0) { stageTitles[i].text = csvDatas[i][j]; }
+                if (j == 1 &&  "Stage" + i == stage.Names) { stamina.text = csvDatas[i][j]; }
+            }
+        }
     }
 
       

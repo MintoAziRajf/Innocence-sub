@@ -9,6 +9,10 @@ public class Scroll : MonoBehaviour
     Vector3 targetPos; //移動先
     float currentY = 0f;　//移動先(y)
 
+    [SerializeField]
+    float upperScrollLimit = 0f;
+    [SerializeField]
+    float lowerScrollLimit = 0f;
     [SerializeField] float speed = 1.0f; //移動速度
     private void Start()
     {
@@ -28,7 +32,7 @@ public class Scroll : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             //上限
-            if (currentY <= 18f)
+            if (currentY <= upperScrollLimit)
             {
                 return;
             }
@@ -39,7 +43,7 @@ public class Scroll : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             //上限
-            if (currentY >= 210f)
+            if (currentY >= lowerScrollLimit)
             {
                 return;
             }
