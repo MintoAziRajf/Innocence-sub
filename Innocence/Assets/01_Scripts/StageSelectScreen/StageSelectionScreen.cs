@@ -35,12 +35,14 @@ namespace StageSelectScene
         
         [SerializeField] Text levelTextRank;
         [SerializeField] Image levelImages;
-        [SerializeField] Text stamina;
+        
 
         [SerializeField] RoadingCSV csv;
         string names;
         Score clearAchievements;
         Color green, yellow, red,purple;
+
+        public string Names => names;
 
         // Start is called before the first frame update
         void Start()
@@ -54,7 +56,12 @@ namespace StageSelectScene
         // Update is called once per frame
         void Update()
         {
-            ClearEvaluations("Stage2",csv.clearEvaluations[0]);
+            for(int i = 0; i < 13;++i)
+            {
+                ClearEvaluations("Stage" + i, csv.ClearEvaluations[i]);
+            }
+            
+
             Evaluation();           
         }
 
@@ -76,10 +83,10 @@ namespace StageSelectScene
 
 
 
-                    if (i < 3) { stamina.text = "- 25 -"; levelTextRank.text = "- EAGY -"; levelImages.color = green; }
-                    if (i > 3 && i < 6) { stamina.text = "- 20 -"; levelTextRank.text = "- NOMAL -"; levelImages.color = yellow; }
-                    if (i > 6 && i < 9) { stamina.text = "- 15 -"; levelTextRank.text = "- HARD -"; levelImages.color = red; }
-                    if (i > 9 && i < 12) { stamina.text = "- 10 -"; levelTextRank.text = "- NIGHTMEA -"; levelImages.color = purple; }
+                    if (i < 3) { levelTextRank.text = "- EAGY -"; levelImages.color = green; }
+                    if (i > 3 && i < 6) { levelTextRank.text = "- NOMAL -"; levelImages.color = yellow; }
+                    if (i > 6 && i < 9) { levelTextRank.text = "- HARD -"; levelImages.color = red; }
+                    if (i > 9 && i < 12) { levelTextRank.text = "- NIGHTMEA -"; levelImages.color = purple; }
 
                     if (i < 10) stageNumber.text = "STAGE - 0" + i;
                     else stageNumber.text = "STAGE - " + i;
