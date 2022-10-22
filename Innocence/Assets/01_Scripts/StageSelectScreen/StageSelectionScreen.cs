@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Dynamic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,8 +14,7 @@ namespace StageSelectScene
     interface IClearEvaluation
     {
         
-      //  void ClearEvaluations(string StageName, Score ClearAchievements);
-      
+      //  void ClearEvaluations(string StageName, Score ClearAchievements);     
     }
 
     [RequireComponent(typeof(AudioSource))]
@@ -37,15 +37,12 @@ namespace StageSelectScene
         [SerializeField] Image levelImages;
         [SerializeField] Text stamina;
 
-        static string names;
+        private string names;
         static Score clearAchievements;
         Color green, yellow, red,purple;
 
-        //追加
-        private int stage;
-        [SerializeField] private GameObject UIManager = null;
-        TitleManager titleManager;
-
+        public string Names => names;
+          
         // Start is called before the first frame update
         void Start()
         {
@@ -54,7 +51,7 @@ namespace StageSelectScene
             red = new Color(1f, 0f, 0f, 0.5f);
             purple = new Color(0.5f, 0f, 0.5f, 0.5f);
 
-            titleManager = UIManager.GetComponent<TitleManager>();
+            //titleManager = UIManager.GetComponent<TitleManager>();
         }
 
         // Update is called once per frame
@@ -77,7 +74,7 @@ namespace StageSelectScene
             {
                 if (other.name == "Stage" + i)
                 {
-                    stage = i;
+                    //stage = i;
                     title.text = titles[i].text;
 
 
@@ -101,17 +98,17 @@ namespace StageSelectScene
                 }
             }
 
-            if (Input.GetButtonDown("Submit"))
+            /*if (Input.GetButtonDown("Submit"))
             {
                 titleManager.PushStage(stage);
-            }
+            }*/
         }
         
         //引数の内容（ステージ名：例 "stage01"など クリア実績数：SCORE1,2,3）
-        public static void ClearEvaluations(string StageName, Score ClearAchievements)
+       /* public static void ClearEvaluations(string StageName, Score ClearAchievements)
         {
           if (StageName == names) clearAchievements = ClearAchievements;            
-        }
+        }*/
 
         
         private void Evaluation()
@@ -147,5 +144,6 @@ namespace StageSelectScene
                     break;
             }
         }
-    }
+    
+    }  
 }
