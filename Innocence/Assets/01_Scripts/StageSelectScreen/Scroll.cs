@@ -19,9 +19,9 @@ public class Scroll : MonoBehaviour
     void Update()
     {
        
-        Debug.Log(targetPos != obj.transform.position);
-        Debug.Log(currentY <= 18f);
-        Debug.Log(currentY >= 250f);
+        //Debug.Log(targetPos != obj.transform.position);
+        //Debug.Log(currentY <= 18f);
+        //Debug.Log(currentY >= 250f);
 
        
 

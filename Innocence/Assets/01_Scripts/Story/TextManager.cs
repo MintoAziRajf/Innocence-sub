@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.AddressableAssets;
 using System.IO;
 using UnityEngine.SceneManagement;
-
+using StageSelectScene;
 
 namespace NTextManager
 {
@@ -136,9 +136,7 @@ namespace NTextManager
        
         protected virtual void Update()
         {
-            Invoke("TextWindow", 3f);
-
-        
+            Invoke("TextWindow", 3f);      
         }
 
         public void TextWindow()
