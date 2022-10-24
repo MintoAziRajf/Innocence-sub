@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI; //パネルのイメージを操作するのに必要
- 
+using Cysharp.Threading.Tasks;
 public class FadeController : MonoBehaviour
 {
 
@@ -15,13 +15,8 @@ public class FadeController : MonoBehaviour
 
 	public float Alfa => alfa;
 	void Start()
-	{
-		red = fadeImage.color.r;
-		green = fadeImage.color.g;
-		blue = fadeImage.color.b;
-		alfa = fadeImage.color.a;
+	{		
 
-		fadeSpeed = 0.02f;
 	}
 
 	void Update()
@@ -35,8 +30,7 @@ public class FadeController : MonoBehaviour
 		{
 			StartFadeOut();
 		}
-
-		if (isFadeIn)
+		else if (isFadeIn)
 		{
 			StartFadeIn();
 		}

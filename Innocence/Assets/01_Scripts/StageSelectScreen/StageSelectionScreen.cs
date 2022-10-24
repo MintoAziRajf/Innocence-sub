@@ -42,7 +42,10 @@ namespace StageSelectScene
         Score clearAchievements;
         Color green, yellow, red,purple;
 
+        int nameNumber = 0;
+        bool keyDown = false;
         public string Names => names;
+
 
         // Start is called before the first frame update
         void Start()
@@ -56,11 +59,24 @@ namespace StageSelectScene
         // Update is called once per frame
         void Update()
         {
-            for(int i = 0; i < 13;++i)
+            keyDown = Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return);
+            for (int i = 0; i < 13;++i)
             {
                 ClearEvaluations("Stage" + i, csv.ClearEvaluations[i]);
             }
-            
+
+            if (keyDown && names != "Stage0")
+            {
+                CSVManager.instance.Stages = nameNumber - 1;
+                CSVManager.instance.LoadGame();
+            }
+            else if(keyDown && names == "Stage0")
+            {
+                CSVManager.instance.Stages = -1;
+                CSVManager.instance.LoadGame();
+            }
+
+
 
             Evaluation();           
         }
@@ -74,16 +90,16 @@ namespace StageSelectScene
 
             names = other.name;
 
-
             for (int i = 0; i < stages.Length; i++)
             {
                 if (other.name == "Stage" + i)
                 {
                     title.text = titles[i].text;
 
+                    nameNumber = i;
 
-
-                    if (i < 3) { levelTextRank.text = "- EAGY -"; levelImages.color = green; }
+                    if(i == 0) { levelTextRank.text = ""; }
+                    if (i >= 1 && i < 3) { levelTextRank.text = "- EAGY -"; levelImages.color = green; }
                     if (i > 3 && i < 6) { levelTextRank.text = "- NOMAL -"; levelImages.color = yellow; }
                     if (i > 6 && i < 9) { levelTextRank.text = "- HARD -"; levelImages.color = red; }
                     if (i > 9 && i < 12) { levelTextRank.text = "- NIGHTMEA -"; levelImages.color = purple; }

@@ -71,6 +71,12 @@ MonoBehaviour:
     m_SerializedLabels: []
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
+  - m_GUID: 25c214ea8542eba48b410f2b79af8780
+    m_Address: Assets/Image/jailer_Normal.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: 284d9dd2332f5d34294af846fd97e4b2
     m_Address: Assets/08_CSV/battle_0.csv
     m_ReadOnly: 0
@@ -289,6 +295,12 @@ MonoBehaviour:
     m_TargetAsset: {fileID: 0}
   - m_GUID: f831dfc30ced78147849bd068ba90914
     m_Address: Assets/StoryFile/Text/Epilogue4Clear.txt
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: f8d03018e74fa754b8d948f3ee1b6622
+    m_Address: Assets/Image/jailer_Stirup.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     m_MainAsset: {fileID: 0}
