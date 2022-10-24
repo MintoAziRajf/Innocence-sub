@@ -137,12 +137,6 @@ MonoBehaviour:
     m_SerializedLabels: []
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
-  - m_GUID: 77ea9bbf79370754eafea6d92c5bdf37
-    m_Address: Assets/08_CSV/PlayerSave.csv
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
   - m_GUID: 7f33e437985ef5141ae341dfbec1c85e
     m_Address: Assets/08_CSV/dialogue_3.csv
     m_ReadOnly: 0

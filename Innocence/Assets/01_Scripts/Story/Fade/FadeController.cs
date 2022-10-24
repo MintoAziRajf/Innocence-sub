@@ -11,7 +11,7 @@ public class FadeController : MonoBehaviour
 
 	public bool isFadeOut = false;  //フェードアウト処理の開始、完了を管理するフラグ
 	public bool isFadeIn = false;   //フェードイン処理の開始、完了を管理するフラグ
-    [SerializeField] Image fadeImage;                //透明度を変更するパネルのイメージ
+    [SerializeField] Image fadeImage = null;                //透明度を変更するパネルのイメージ
 
 	public float Alfa => alfa;
 	void Start()

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class Scroll : MonoBehaviour
 {
-    [SerializeField] GameObject obj; //移動させる対象
+    [SerializeField] GameObject obj = null; //移動させる対象
 
     Vector3 targetPos; //移動先
     float currentY = 0f;　//移動先(y)
@@ -29,7 +29,7 @@ public class Scroll : MonoBehaviour
 
        
 
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
         {
             //上限
             if (currentY <= upperScrollLimit)
@@ -40,7 +40,7 @@ public class Scroll : MonoBehaviour
             currentY -= 18f; //Ý軸のみ変更
             targetPos.y = currentY;
         }
-        if (Input.GetKeyDown(KeyCode.DownArrow))
+        if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
         {
             //上限
             if (currentY >= lowerScrollLimit)

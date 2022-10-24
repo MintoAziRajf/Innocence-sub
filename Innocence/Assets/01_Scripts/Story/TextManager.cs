@@ -29,14 +29,14 @@ namespace NTextManager
     public class TextManager : MonoBehaviour, ITextManager
     {
 
-        [SerializeField] AudioSource audioSource;
-        [SerializeField] AudioClip audioClip;
+        [SerializeField] AudioSource audioSource = null;
+        [SerializeField] AudioClip audioClip = null;
 
-        [SerializeField] Image chara_leftImage, chara_rightImage;
+        [SerializeField] Image chara_leftImage = null, chara_rightImage = null;
         //人の名前
-        [SerializeField] Text personName;
+        [SerializeField] Text personName = null;
         //テキストウィンドウの移動用
-        [SerializeField] RectTransform rectTransform;
+        [SerializeField] RectTransform rectTransform = null;
 
 
         //最初と最後のフェード処理
@@ -46,7 +46,7 @@ namespace NTextManager
         bool checkIfTheStoryIsOver = false;
 
         //テキストウィンドウに表示されるテキスト
-        [SerializeField] Text mainText;
+        [SerializeField] Text mainText = null;
 
         //テキストファイル読み込み用
         protected List<string> texts = new List<string>();
@@ -55,10 +55,10 @@ namespace NTextManager
 
         //キャラクターの画像をフェード処理するため
         [SerializeField]
-        FadeController chara_leftFade,chara_rightFade;
+        FadeController chara_leftFade = null, chara_rightFade = null;
 
         //ファイルのパス
-        [SerializeField] string textPath, csvPath;
+        [SerializeField] string textPath = null, csvPath = null;
 
 
    

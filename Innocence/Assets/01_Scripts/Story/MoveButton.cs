@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MoveButton : MonoBehaviour
 {
-    [SerializeField] RectTransform button;
+    [SerializeField] RectTransform button = null;
    
     private int counter = 0;
     private float move = 0.005f;

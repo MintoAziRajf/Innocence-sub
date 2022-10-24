@@ -21,23 +21,23 @@ namespace StageSelectScene
     public class StageSelectionScreen : MonoBehaviour, IClearEvaluation
     {
 
-        [SerializeField] AudioSource audioSource;
-        [SerializeField] AudioClip audioClip;
+        [SerializeField] AudioSource audioSource = null;
+        [SerializeField] AudioClip audioClip = null;
 
-        [SerializeField] GameObject ClearEvaluation00, ClearEvaluation01, ClearEvaluation02;
+        [SerializeField] GameObject ClearEvaluation00 = null, ClearEvaluation01 = null, ClearEvaluation02 = null;
 
         [SerializeField] GameObject[] stagesRed = new GameObject[13];
 
         [SerializeField] Text[] stages = new Text[13];
         [SerializeField] Text[] titles = new Text[13];
-        [SerializeField] Text stageNumber;
-        [SerializeField] Text title;
+        [SerializeField] Text stageNumber = null;
+        [SerializeField] Text title = null;
         
-        [SerializeField] Text levelTextRank;
-        [SerializeField] Image levelImages;
+        [SerializeField] Text levelTextRank = null;
+        [SerializeField] Image levelImages = null;
         
 
-        [SerializeField] RoadingCSV csv;
+        [SerializeField] RoadingCSV csv = null;
         string names;
         Score clearAchievements;
         Color green, yellow, red,purple;

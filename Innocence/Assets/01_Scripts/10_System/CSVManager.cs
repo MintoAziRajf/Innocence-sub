@@ -4,12 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
 using System.Text;
+using UnityEngine.AddressableAssets;
 
 public class CSVManager : SingletonMonoBehaviour<CSVManager>
 {
     public static CSVManager instance;
-    AssetBundle assetBundle;
-
     private int stages;
     public int Stages
     {
@@ -25,6 +24,10 @@ public class CSVManager : SingletonMonoBehaviour<CSVManager>
         }
     }
 
+    //Loadしてるかどうか
+    private bool isLoad = false;
+
+    //CSV格納場所
     TextAsset masterCSV; //全ステージの情報
     List<string[]> masterDatas = new List<string[]>();//masterCSVのリスト
     List<List<string[]>> mainDatas = new List<List<string[]>>();//各ステージで使用するメインデータ
@@ -47,23 +50,23 @@ public class CSVManager : SingletonMonoBehaviour<CSVManager>
     public string[] SkillCheckInfo(int diff)
     {
         return skillCheckDatas[diff];
-        
-    }
-    void Awake()
-    {
-        DontDestroyOnLoad(this.gameObject);
-        LoadMasterDate();
-        LoadPlayerData();
-        LoadAllCSV();
     }
 
-    /// <summary>
-    /// CSVから全ステージの情報をロードする
-    /// </summary>
-    private void LoadMasterDate()
+    void Awake()
     {
-        LoadCSV("master", masterDatas, true);
-        Debug.Log("master.csvを読み込みました。");
+        //Singleton
+        // シングルトンかつ、シーン遷移しても破棄されないようにする
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+        StartCoroutine(LoadAllCSV());
+        LoadPlayerData();
     }
 
     /// <summary>
@@ -74,55 +77,63 @@ public class CSVManager : SingletonMonoBehaviour<CSVManager>
     /// <param name="b">csvの一行目をスキップするか</param>
     private void LoadCSV(string name, List<string[]> datas, bool b)
     {
-        /*
-        datas.Clear();        
-        TextAsset csv = assetBundle.LoadAsset<TextAsset>(name); //AssetBundle内のcsvを読み込む
-        StringReader reader = new StringReader(csv.text);
-        string line = null;
-        if (b) line = reader.ReadLine(); //bがtrueなら一行目をスキップする
-        while (reader.Peek() != -1) // reader.Peekが-1になるまで
-        {
-            line = reader.ReadLine(); // 一行ずつ読み込み
-            datas.Add(line.Split(',')); // , 区切りでリストに追加
-        }*/
+        //ロード開始
+        isLoad = true;
+        //Debug.Log(name + ".csvの読み込みを開始します。");
 
-        datas.Clear();
         string path = Path.Combine("Assets/08_CSV/" + name + ".csv");
-        StreamReader csv = new StreamReader(path, Encoding.UTF8);
-        string line = null;
-        if (b) line = csv.ReadLine(); //bがtrueなら一行目をスキップする
-        while ((line = csv.ReadLine()) != null)
+        Addressables.LoadAssetAsync<TextAsset>(path).Completed += csv =>
         {
-            datas.Add(line.Split(','));
-        }
-        csv.Close();
+            StringReader reader = new StringReader(csv.Result.text);
+
+            string line = null;
+            if (b) line = reader.ReadLine(); //bがtrueなら一行目をスキップする
+            while (reader.Peek() != -1) // reader.Peekが-1になるまで
+            {
+                line = reader.ReadLine(); // 一行ずつ読み込み
+                datas.Add(line.Split(',')); // , 区切りでリストに追加
+            }
+            reader.Close();
+            //ロード完了
+            isLoad = false;
+            //Debug.Log(name + ".csvの読み込みを終了します。");
+        };
     }
 
     /// <summary>
     /// 全てのCSVを読み込む
     /// </summary>
-    private void LoadAllCSV()
+    private IEnumerator LoadAllCSV()
     {
-        //前回の情報を全て削除
-        mainDatas.Clear();
-        subDatas.Clear();
-        skillCheckDatas.Clear();
-        //CSVをひとつづつListに追加する
+        ClearAllDatas();
+        // CSVから全ステージの情報をロードする
+        LoadCSV("Master", masterDatas, true);
+        yield return new WaitUntil(() => !isLoad);
+
+        //各ステージのメインデータとサブデータをロードする
         for (int i = 0; i < masterDatas.Count; i++)
         {
             //メインデータ
             mainDatas.Add(new List<string[]>()); //保存するリストを追加
             LoadCSV(masterDatas[i][2], mainDatas[i], false);
-
+            yield return new WaitUntil(() => !isLoad);
             //サブデータ
             subDatas.Add(new List<string[]>()); //保存するリストを追加
             LoadCSV(masterDatas[i][3], subDatas[i], true);
+            yield return new WaitUntil(() => !isLoad);
         }
         //ミニゲームのデータを読み込む
         LoadCSV("SkillCheck", skillCheckDatas, true);
-        Debug.Log("全てのCSVを読み込みました。");
     }
 
+    private void ClearAllDatas()
+    {
+        //前回の情報を全て削除
+        masterDatas.Clear();
+        mainDatas.Clear();
+        subDatas.Clear();
+        skillCheckDatas.Clear();
+    }
 
 
     //ステージ遷移プレハブ
@@ -132,42 +143,48 @@ public class CSVManager : SingletonMonoBehaviour<CSVManager>
     /// </summary>
     public void LoadGame()
     {
-        Debug.Log("cc");
+        //ステージ遷移オブジェクトを生成
+        GameObject SceneLoader = Instantiate(loadPrefab);
+        //ステージ遷移スクリプトを取得
+        Loading loading = SceneLoader.GetComponent<Loading>();
+
         if (stages == masterDatas.Count)
         {
             Debug.Log("stagesが" + stages + "なので、エンドシーンをロードします。");
-            GameObject SceneLoader = Instantiate(loadPrefab);
-            Loading loading = SceneLoader.GetComponent<Loading>();
+            //ステージ遷移(第二引数にシーン名)
             loading.StartCoroutine("SceneLoading", "05_Ending");
             return;
         }
-        if (masterDatas[stages][1] == "TRUE")
+        else if(stages == -1)
         {
-            Debug.Log("stagesが" + stages + "なので、バトルシーンをロードします。");
-            //ステージ遷移オブジェクトを生成
-            GameObject SceneLoader = Instantiate(loadPrefab);
-            //ステージ遷移スクリプトを取得
-            Loading loading = SceneLoader.GetComponent<Loading>();
-            //ステージ遷移(第二引数にシーン名)
-            loading.StartCoroutine("SceneLoading", "01_Battle");
+            Debug.Log("stagesが" + stages + "なので、タイトルシーンをロードします。");
+            loading.StartCoroutine("SceneLoading", "00_Title");
+            return;
         }
-        else if(masterDatas[stages][1] == "FALSE")
+        else
         {
-            Debug.Log("stagesが" + stages + "なので、パズルシーンをロードします。");
-            GameObject SceneLoader = Instantiate(loadPrefab);
-            Loading loading = SceneLoader.GetComponent<Loading>();
-            loading.StartCoroutine("SceneLoading", "01_MainGame");
+            if (masterDatas[stages][1] == "TRUE")
+            {
+                Debug.Log("stagesが" + stages + "なので、バトルシーンをロードします。");
+                loading.StartCoroutine("SceneLoading", "01_Battle");
+            }
+            else if (masterDatas[stages][1] == "FALSE")
+            {
+                Debug.Log("stagesが" + stages + "なので、パズルシーンをロードします。");
+                loading.StartCoroutine("SceneLoading", "01_MainGame");
+            }
         }
     }
 
     /// <summary>
     /// プレイヤーデータ関連
     /// </summary>
+    private string playerPath = null;
     TextAsset playerCSV; //全ステージのクリア情報
     List<string[]> playerDatas = new List<string[]>();//playerCSVのリスト
     public List<string[]> PlayerDatas
     {
-        get { return playerDatas; }
+        get { return playerDatas;}
     }
 
     /// <summary>
@@ -175,7 +192,8 @@ public class CSVManager : SingletonMonoBehaviour<CSVManager>
     /// </summary>
     private void LoadPlayerData()
     {
-        LoadCSV("PlayerSave", playerDatas, false);
+        playerPath = Application.dataPath + @"\08_CSV\PlayerSave.csv";
+        InitializePlayerData();
     }
 
     /// <summary>
@@ -185,9 +203,7 @@ public class CSVManager : SingletonMonoBehaviour<CSVManager>
     /// <param name="remainingSteps">残り歩数</param>
     public void KeepPlayerData(int curretStages, int remainingSteps)
     {
-        string path = Path.Combine("Assets/08_CSV/" + "PlayerSave" + ".csv");
-
-        using (StreamWriter streamWriter = new StreamWriter(path, false, Encoding.UTF8))
+        using (StreamWriter streamWriter = new StreamWriter(playerPath, false, Encoding.UTF8))
         {
             for (int i = 0; i < playerDatas.Count; i++)
             {
@@ -210,23 +226,34 @@ public class CSVManager : SingletonMonoBehaviour<CSVManager>
     }
 
     /// <summary>
-    /// プレイヤーデータの初期化(Debug用)
+    /// プレイヤーデータの初期化
     /// </summary>
     private void InitializePlayerData()
     {
-        //string path = Resources.Load(PlayerSave);
-        string path = Path.Combine(Application.streamingAssetsPath, "CSV/PlayerSave.csv");
-        using (StreamWriter streamWriter = new StreamWriter(path, false, Encoding.UTF8))
+        if (!File.Exists(playerPath))
         {
-            for (int i = 0; i < playerDatas.Count; i++)
+            using (File.Create(playerPath)) ;
+            using (StreamWriter streamWriter = new StreamWriter(playerPath, false, Encoding.UTF8))
             {
-                streamWriter.Write("F,C");
-                streamWriter.WriteLine();
+                for (int i = 0; i < 12; i++)
+                {
+                    streamWriter.Write("FALSE,C");
+                    streamWriter.WriteLine();
+                }
+                streamWriter.Flush();
+                streamWriter.Close();
+                Debug.Log("プレイヤーデータの初期化に成功しました。");
             }
-            streamWriter.Flush();
-            streamWriter.Close();
         }
-        LoadPlayerData();
+
+        StreamReader csv = new StreamReader(playerPath, Encoding.UTF8);
+        string line = null;
+        while ((line = csv.ReadLine()) != null)
+        {
+            playerDatas.Add(line.Split(','));
+        }
+        csv.Close();
+        Debug.Log("プレイヤーデータをロードしました。");
     }
 
 

@@ -9,9 +9,9 @@ using UnityEngine.UI;
 public class RoadingCSV : MonoBehaviour
 {
     //ファイルのパス
-    [SerializeField] string csvPath,playerSave;
+    [SerializeField] string csvPath = null;
 
-    [SerializeField] StageSelectionScreen stage;
+    [SerializeField] StageSelectionScreen stage = null;
     //csvファイル読み込み用
     List<string[]> csvDatas = new List<string[]>();
     List<string[]> playerDatas = new List<string[]>();
@@ -20,7 +20,7 @@ public class RoadingCSV : MonoBehaviour
     Text[] stageTitles = new Text[13];
 
     Text[] staminas = new Text[13];
-    [SerializeField] Text stamina;
+    [SerializeField] Text stamina = null;
     [SerializeField]
     Score[] clearEvaluations = new Score[13];
 
@@ -53,9 +53,9 @@ public class RoadingCSV : MonoBehaviour
             loadingCheckCsv = true;
         };
 
-        
-       
 
+
+        /*
         Addressables.LoadAssetAsync<TextAsset>(playerSave).Completed += playerData =>
         {
             StringReader readerPlayer = new StringReader(playerData.Result.text);
@@ -70,8 +70,14 @@ public class RoadingCSV : MonoBehaviour
         };
 
         yield return new WaitUntil(() => loadingCheckCsv && loadingCheckPlayer);
+        */
 
-       
+        //--------------追加---------------
+        playerDatas = CSVManager.instance.PlayerDatas;
+        loadingCheckPlayer = true;
+        //---------------------------------
+
+        yield return new WaitUntil(() => loadingCheckCsv && loadingCheckPlayer);
 
         //playersaveの二列目取得
         for (int i = 1; i < 12; ++i)

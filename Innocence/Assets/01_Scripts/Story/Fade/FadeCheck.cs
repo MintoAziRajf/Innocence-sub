@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class FadeCheck : MonoBehaviour
 {
-    [SerializeField] GameObject obj;
-    [SerializeField ] Fade fade;
+    [SerializeField] GameObject obj = null;
+    [SerializeField ] Fade fade = null;
     // Start is called before the first frame update
     void Start()
     {
