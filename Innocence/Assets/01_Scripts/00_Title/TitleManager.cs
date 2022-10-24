@@ -8,12 +8,8 @@ public class TitleManager : MonoBehaviour
 {
     //animator
     Animator animator;
-    //タイトルかステージセレクトか
-    private bool isTitle = true;
 
-    //EventSystem
-    private EventSystem eventSystem = null;
-    private bool isFirst = true;
+    private bool isFirst = true; //一度目の操作かどうか
     //ステージ遷移プレハブ
     [SerializeField] private GameObject loadPrefab = null;
 
@@ -25,19 +21,8 @@ public class TitleManager : MonoBehaviour
         csvManager = GameObject.Find("CSVManager").GetComponent<CSVManager>();
         SoundManager.instance.PlayBGM(SoundManager.BGM_Type.Title);
         animator = GetComponent<Animator>();
-        animator.SetBool("isTitle", true);
     }
 
-    void Update()
-    {
-        if (isTitle) return;　//タイトル画面の時は何もしない
-        if (Input.GetButtonDown("Cancel"))
-        {
-            //SoundManager.instance.PlaySE(SoundManager.SE_Type.Cancel);
-            isTitle = true;
-            animator.SetBool("isTitle", isTitle);
-        }
-    }
 
     //決定音
     private void SelectSubmit()
@@ -63,10 +48,21 @@ public class TitleManager : MonoBehaviour
     //ステージセレクト
     public void PushStageSelect()
     {
-        SelectSubmit(); //SE
-        isTitle = false;
-        animator.SetBool("isTitle", isTitle);
+        if (!isFirst) return;
+        isFirst = false;
+        SelectSubmit();
+        StartCoroutine(LoadStageSelect());
     }
+    private IEnumerator LoadStageSelect()
+    {
+        animator.SetTrigger("selectStageSelect"); //アニメーション起動
+        yield return new WaitForSeconds(0.5f);//アニメーション表示時間待機(0.5秒)
+        //ステージセレクトシーンをロード
+        GameObject SceneLoader = Instantiate(loadPrefab);
+        Loading loading = SceneLoader.GetComponent<Loading>();
+        loading.StartCoroutine("SceneLoading", "07_StageSelect");
+    }
+
     //ステージ 選択
     public void PushStage(int num)
     {
