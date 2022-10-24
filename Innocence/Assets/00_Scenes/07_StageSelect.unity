@@ -4509,8 +4509,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 450}
-  m_SizeDelta: {x: 1820.0001, y: 100}
+  m_AnchoredPosition: {x: 0, y: 480}
+  m_SizeDelta: {x: 1820.0001, y: 130}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &719811934
 MonoBehaviour:
@@ -7225,7 +7225,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   csvPath: Assets/StoryFile/CSV/test.csv
-  playerSave: Assets/08_CSV/PlayerSave.csv
   stage: {fileID: 1608943513}
   stageTitles:
   - {fileID: 1198007131}

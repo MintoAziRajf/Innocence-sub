@@ -103,7 +103,7 @@ public class RoadingCSV : MonoBehaviour
             for (int j = 0; j < 2; ++j)
             {
 
-                if (j == 0) { stageTitles[i].text = csvDatas[i][j]; }
+                if (j == 0) { stageTitles[i].text = "  " + csvDatas[i][j]; }
                 if (j == 1 &&  "Stage" + i == stage.Names) { stamina.text = csvDatas[i][j]; }
             }
         }

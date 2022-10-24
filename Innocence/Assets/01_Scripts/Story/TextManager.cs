@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.AddressableAssets;
 using System.IO;
+using Cysharp.Threading.Tasks;
 using UnityEngine.SceneManagement;
 using StageSelectScene;
 
@@ -75,6 +76,7 @@ namespace NTextManager
         bool reCheck;
         bool whenInvokeBegins;
         bool blackoutCheck;
+        bool waitCheck;
 
         Vector2 textWindowMove;
         public bool CheckIfTheStoryIsOver => checkIfTheStoryIsOver;
@@ -136,7 +138,8 @@ namespace NTextManager
        
         protected virtual void Update()
         {
-            Invoke("TextWindow", 3f);      
+            Invoke("TextWindow", 3f);
+            if (Input.GetKey(KeyCode.Escape)) { checkIfTheStoryIsOver = true; }
         }
 
         public void TextWindow()
@@ -181,7 +184,7 @@ namespace NTextManager
             if (!reCheck && blackoutCheck)
             {
                 blackoutCheck = false;
-                Invoke("Blackout", 1f);
+                Invoke("Blackout", 0.5f);
             }
         }
 
@@ -216,12 +219,12 @@ namespace NTextManager
                 {
 
                     //àÍï∂éöì«Ç›çûÇ›ë¨Ç≥
-                    textInterval = 5;
+                    textInterval = 1;
 
                 }
                 else
                 {
-                    textInterval = 50;
+                    textInterval = 3;
                 }
 
             }
@@ -242,19 +245,24 @@ namespace NTextManager
                 mainText.text = "";
 
             }
+
+            
         }
 
      
 
-        protected void ImageLoading(bool check, int i, string imageName)
+        protected async void ImageLoading(bool check, int i, string imageName)
         {
             if (check)
             {
                 Addressables.LoadAssetAsync<Sprite>(imageName).Completed += sprite =>
                 {
-                    if(i == 1)chara_leftImage.sprite = Instantiate(sprite.Result);
+                    waitCheck = false;
+                    if (i == 1)chara_leftImage.sprite = Instantiate(sprite.Result);
                     else chara_rightImage.sprite = Instantiate(sprite.Result);
+                    waitCheck = true;
                 };
+                await UniTask.WaitUntil(() => waitCheck);
             }
         }
 
