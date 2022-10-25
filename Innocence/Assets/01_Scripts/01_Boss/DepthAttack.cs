@@ -11,7 +11,8 @@ public class DepthAttack : BossAttack
     [SerializeField] private GameObject thunder = null;
     [SerializeField] private GameObject mark = null;
     [SerializeField, Tooltip("攻撃までのフレーム数")] private int delay = 0;
-
+    private float frame = 1f / 60f;
+    float time = 0f;
     private SpriteRenderer sr;
     private BoxCollider2D bc;
 
@@ -35,20 +36,30 @@ public class DepthAttack : BossAttack
             alpha += 1f / (float)delay;
             c.a = alpha;
             sr.color = c;
-            yield return new WaitForSeconds(0.01667f);
+            yield return null;
         }
         //マークの削除
         alpha = 0f;
         c.a = alpha;
         sr.color = c;
-        //コライダーのアクティブ
-        bc.enabled = true;
         //落雷のアクティブ
         thunder.SetActive(true);
         for (int i = 0; i < 30; i++)
         {
-            if (i == 15) bc.enabled = false;
-            yield return new WaitForSeconds(0.01667f);
+            time += Time.deltaTime;
+            if (i == 9)
+            {
+                //コライダーのアクティブ
+                bc.enabled = true;
+                Debug.Log("ON = " + time);
+            }
+            if (i == 19)
+            {
+                //コライダーの非アクティブ
+                bc.enabled = false;
+                Debug.Log("OFF = " + time);
+            }
+            yield return null;
         }
         Destroy(this.gameObject);
     }

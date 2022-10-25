@@ -179,7 +179,7 @@ public class CSVManager : SingletonMonoBehaviour<CSVManager>
     /// <summary>
     /// プレイヤーデータ関連
     /// </summary>
-    private string playerPath = null;
+    private string playerPath = null; //プレイヤーデータの保存先パス
     TextAsset playerCSV; //全ステージのクリア情報
     List<string[]> playerDatas = new List<string[]>();//playerCSVのリスト
     public List<string[]> PlayerDatas
@@ -187,49 +187,14 @@ public class CSVManager : SingletonMonoBehaviour<CSVManager>
         get { return playerDatas;}
     }
 
+
     /// <summary>
     /// プレイヤーデータのロード
+    /// プレイヤーデータが存在しない場合、初期化
     /// </summary>
     private void LoadPlayerData()
     {
         playerPath = Application.dataPath + @"\08_CSV\PlayerSave.csv";
-        InitializePlayerData();
-    }
-
-    /// <summary>
-    /// クリアデータの保存
-    /// </summary>
-    /// <param name="curretStages">現在のステージ</param>
-    /// <param name="remainingSteps">残り歩数</param>
-    public void KeepPlayerData(int curretStages, int remainingSteps)
-    {
-        using (StreamWriter streamWriter = new StreamWriter(playerPath, false, Encoding.UTF8))
-        {
-            for (int i = 0; i < playerDatas.Count; i++)
-            {
-                if (i == curretStages)
-                {
-                    string s;
-                    if (remainingSteps >= 10) s = "S";
-                    else if (remainingSteps >= 5) s = "A";
-                    else s = "B";
-                    streamWriter.WriteLine("TRUE," + s);
-                }
-                else
-                {
-                    streamWriter.WriteLine(playerDatas[i][0] + "," + playerDatas[i][1]);
-                }
-            }
-            streamWriter.Flush();
-            streamWriter.Close();
-        }
-    }
-
-    /// <summary>
-    /// プレイヤーデータの初期化
-    /// </summary>
-    private void InitializePlayerData()
-    {
         if (!File.Exists(playerPath))
         {
             using (File.Create(playerPath)) ;
@@ -256,9 +221,40 @@ public class CSVManager : SingletonMonoBehaviour<CSVManager>
         Debug.Log("プレイヤーデータをロードしました。");
     }
 
+    /// <summary>
+    /// クリアデータの保存、その後再読み込み
+    /// </summary>
+    /// <param name="curretStages">現在のステージ</param>
+    /// <param name="remainingSteps">残り歩数</param>
+    public void KeepPlayerData(int curretStages, int remainingSteps)
+    {
+        using (StreamWriter streamWriter = new StreamWriter(playerPath, false, Encoding.UTF8))
+        {
+            for (int i = 0; i < playerDatas.Count; i++)
+            {
+                if (i == curretStages)
+                {
+                    string s;
+                    if (remainingSteps >= 10) s = "S";
+                    else if (remainingSteps >= 5) s = "A";
+                    else s = "B";
+                    streamWriter.WriteLine("TRUE," + s);
+                }
+                else
+                {
+                    streamWriter.WriteLine(playerDatas[i][0] + "," + playerDatas[i][1]);
+                }
+            }
+            streamWriter.Flush();
+            streamWriter.Close();
+        }
+
+        //再読み込み
+        LoadPlayerData();
+    }
 
     /// <summary>
-    /// Debug用
+    /// -------------------------------------------------Debug-------------------------------------------------
     /// </summary>
     /// <param name="num">強制的にステージを変更する</param>
     public void LoadGame(int num)
@@ -277,7 +273,7 @@ public class CSVManager : SingletonMonoBehaviour<CSVManager>
         }
         if (Input.GetKey(KeyCode.LeftAlt) && Input.GetKeyDown(KeyCode.O))
         {
-            InitializePlayerData();
+            LoadPlayerData();
         }
     }
     

@@ -18,9 +18,6 @@ public class BattleController : MonoBehaviour
     //無敵時間
     private float invisibleTime;
 
-    //1f
-    private float frame = 1f / 60f;
-
     private void Update()
     {
         //無敵時間
@@ -52,7 +49,7 @@ public class BattleController : MonoBehaviour
         Color c = damageScreen.color;
         for (int i = 0; i < 6; i++)
         {
-            yield return new WaitForSecondsRealtime(frame);
+            yield return null;
             //不透明度計算
             alpha += 0.015f;
             c.a = alpha;
@@ -60,7 +57,7 @@ public class BattleController : MonoBehaviour
         }
         for (int i = 0; i < 6; i++)
         {
-            yield return new WaitForSecondsRealtime(frame);
+            yield return null;
             //不透明度計算
             alpha -= 0.015f;
             c.a = alpha;

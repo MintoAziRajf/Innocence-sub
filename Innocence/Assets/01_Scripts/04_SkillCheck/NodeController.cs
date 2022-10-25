@@ -5,7 +5,7 @@ using UnityEngine;
 public class NodeController : MonoBehaviour
 {
     //成功:s 失敗:f
-    [SerializeField] private Material s_Material = null;
+    [SerializeField] private GameObject s_Effect = null;
     [SerializeField] private Material f_Material = null;
     private MeshRenderer myRenderer = null;
     private bool isSuccess = false;
@@ -16,7 +16,9 @@ public class NodeController : MonoBehaviour
     }
     public void NodeSuccess()
     {
-        myRenderer.material = s_Material;
+        myRenderer.enabled = false;
+        GameObject obj = Instantiate(s_Effect, this.transform.position, this.transform.rotation, this.transform); //エフェクトを生成
+        Destroy(obj, 2f);
         isSuccess = true;
     }
     public void NodeExit()
