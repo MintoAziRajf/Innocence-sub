@@ -44,6 +44,7 @@ namespace StageSelectScene
 
         int nameNumber = 0;
         bool keyDown = false;
+        bool isFirst = false;
         public string Names => names;
 
 
@@ -59,6 +60,7 @@ namespace StageSelectScene
         // Update is called once per frame
         void Update()
         {
+            if (isFirst) return;
             keyDown = Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return);
             for (int i = 0; i < 13;++i)
             {
@@ -67,11 +69,13 @@ namespace StageSelectScene
 
             if (keyDown && names != "Stage0")
             {
+                isFirst = true;
                 CSVManager.instance.Stages = nameNumber - 1;
                 CSVManager.instance.LoadGame();
             }
             else if(keyDown && names == "Stage0")
             {
+                isFirst = true;
                 CSVManager.instance.Stages = -1;
                 CSVManager.instance.LoadGame();
             }

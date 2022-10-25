@@ -20,6 +20,6 @@ public class OpeningManager : MonoBehaviour
         SoundManager.instance.PlaySE(SoundManager.SE_Type.Submit);
         GameObject SceneLoader = Instantiate(loadPrefab);
         Loading loading = SceneLoader.GetComponent<Loading>();
-        loading.StartCoroutine("SceneLoading", "00_Title");
+        loading.StartCoroutine("SceneLoading", "Prologue");
     }
 }

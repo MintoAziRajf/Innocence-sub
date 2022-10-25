@@ -401,7 +401,6 @@ GameObject:
   m_Component:
   - component: {fileID: 878163562}
   - component: {fileID: 878163561}
-  - component: {fileID: 878163560}
   - component: {fileID: 878163563}
   - component: {fileID: 878163558}
   m_Layer: 0
@@ -428,14 +427,6 @@ MonoBehaviour:
   blendDistance: 0
   weight: 1
   sharedProfile: {fileID: 11400000, guid: 2776a483deb4e1c478694e45d4eaa86e, type: 2}
---- !u!81 &878163560
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 878163557}
-  m_Enabled: 1
 --- !u!20 &878163561
 Camera:
   m_ObjectHideFlags: 0
@@ -749,7 +740,7 @@ PrefabInstance:
     - target: {fileID: 2227001648040371544, guid: 251c7d0ff728e614c976c0ed5a9177aa,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 251c7d0ff728e614c976c0ed5a9177aa, type: 3}

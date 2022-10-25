@@ -24,7 +24,7 @@ public class Scroll : MonoBehaviour
     {
        
         //Debug.Log(targetPos != obj.transform.position);
-        Debug.Log(currentY);
+        //Debug.Log(currentY);
         //Debug.Log(currentY >= 250f);
 
        

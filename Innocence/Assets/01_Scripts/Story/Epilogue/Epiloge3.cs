@@ -5,7 +5,7 @@ public class Epiloge3 : TextManager
     protected override void Blackout()
     {
         fade.FadeOut(0, () => fade.FadeIn(3));
-        //   SceneManager.LoadScene(""); ‚Ç‚ÌƒV[ƒ“‚É‘JˆÚ‚·‚é‚©‚Í•Û—¯
+        CSVManager.instance.LoadGame(true);
     }
 
     protected override int lineIsTheEnd()

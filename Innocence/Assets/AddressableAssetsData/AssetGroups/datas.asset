@@ -1,0 +1,181 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: datas
+  m_EditorClassIdentifier: 
+  m_GroupName: datas
+  m_Data:
+    m_SerializedData: []
+  m_GUID: eece9dbdf1464964db6c78e10ec7400b
+  m_SerializeEntries:
+  - m_GUID: 025bbfc1d53030f4e9198b27fd53e820
+    m_Address: Assets/08_CSV/battle_3.csv
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 12633e0bf24ba9e48b15ee208faff54b
+    m_Address: Assets/08_CSV/game_7.csv
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 4900000, guid: 12633e0bf24ba9e48b15ee208faff54b, type: 3}
+    m_TargetAsset: {fileID: 4900000, guid: 12633e0bf24ba9e48b15ee208faff54b, type: 3}
+  - m_GUID: 15fa1de3b1501c24aa74f6bf01dd4d0c
+    m_Address: Assets/08_CSV/map_0.csv
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 20816a62becd6a94da6f54d4c991447a
+    m_Address: Assets/08_CSV/game_3.csv
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 20b0ba3e04ed94b4cbb3a16a03d27ea0
+    m_Address: Assets/08_CSV/dialogue_0.csv
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 243c1bf589960fa44983408766cde810
+    m_Address: Assets/08_CSV/map_3.csv
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 284d9dd2332f5d34294af846fd97e4b2
+    m_Address: Assets/08_CSV/battle_0.csv
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 4900000, guid: 284d9dd2332f5d34294af846fd97e4b2, type: 3}
+    m_TargetAsset: {fileID: 4900000, guid: 284d9dd2332f5d34294af846fd97e4b2, type: 3}
+  - m_GUID: 32ee05efed9eeec4f989b4d837f1f730
+    m_Address: Assets/08_CSV/map_5.csv
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 3e795854a3e73ad4c8656c7a76639b09
+    m_Address: Assets/08_CSV/game_0.csv
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 4e0d5f86b6f087a4cb840d005326b450
+    m_Address: Assets/08_CSV/map_2.csv
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 5e3674bb6378a0647a4eaf44e7324b33
+    m_Address: Assets/08_CSV/Master.csv
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 4900000, guid: 5e3674bb6378a0647a4eaf44e7324b33, type: 3}
+    m_TargetAsset: {fileID: 4900000, guid: 5e3674bb6378a0647a4eaf44e7324b33, type: 3}
+  - m_GUID: 7165268a70708c3489afd9ca3276201d
+    m_Address: Assets/08_CSV/map_1.csv
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 725715a1a16b32244ba4ea22907c15eb
+    m_Address: Assets/08_CSV/battle_2.csv
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 7f33e437985ef5141ae341dfbec1c85e
+    m_Address: Assets/08_CSV/dialogue_3.csv
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 8ded8bead74ea494082468bc529c62b4
+    m_Address: Assets/08_CSV/SkillCheck.csv
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 8df2c7dfaef670049a590a557bc02661
+    m_Address: Assets/08_CSV/game_6.csv
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 9ac969730040b504b9d31bca61d0a65c
+    m_Address: Assets/08_CSV/battle_1.csv
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: a6a42f702f599fd4692ec2bf8d0b000e
+    m_Address: Assets/08_CSV/map_7.csv
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 4900000, guid: a6a42f702f599fd4692ec2bf8d0b000e, type: 3}
+    m_TargetAsset: {fileID: 4900000, guid: a6a42f702f599fd4692ec2bf8d0b000e, type: 3}
+  - m_GUID: afdbda64dfa3080488742c643ff9b210
+    m_Address: Assets/08_CSV/game_1.csv
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: c3ac2ca1906c6284eac56265876526d6
+    m_Address: Assets/08_CSV/dialogue_2.csv
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: da37a226ca0e62d47adef2500c8173fb
+    m_Address: Assets/08_CSV/game_5.csv
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: da5b8168102cf6f47ae3db7c7be80ec0
+    m_Address: Assets/08_CSV/map_4.csv
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: dccd8c30bec385844acad63e7a9f09a8
+    m_Address: Assets/08_CSV/game_4.csv
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: e6a185655bfbf384b9dd469a0f65a295
+    m_Address: Assets/08_CSV/dialogue_1.csv
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: e913677b87e1a4a4cbeb2a43808b52bc
+    m_Address: Assets/08_CSV/game_2.csv
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: fc821a9c25da9eb459370ed5e7652eeb
+    m_Address: Assets/08_CSV/map_6.csv
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: c8afdbf5d9a37a345b513a77b1622dfb, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 475675d16bd8470489f2b6f63e5709f7, type: 2}
+    - {fileID: 11400000, guid: 3e28a0f30c3327a4aa3ac2b71c26202e, type: 2}

@@ -25,13 +25,13 @@ namespace NTextManager
     }
 
 
-    [RequireComponent(typeof(AudioSource))]
+    //[RequireComponent(typeof(AudioSource))]
 
     public class TextManager : MonoBehaviour, ITextManager
     {
 
-        [SerializeField] AudioSource audioSource = null;
-        [SerializeField] AudioClip audioClip = null;
+        //[SerializeField] AudioSource audioSource = null;
+        //[SerializeField] AudioClip audioClip = null;
 
         [SerializeField] Image chara_leftImage = null, chara_rightImage = null;
         //l‚Ì–¼‘O
@@ -89,6 +89,8 @@ namespace NTextManager
        
         protected virtual void Start()
         {
+            SoundManager.instance.PlayBGM(SoundManager.BGM_Type.Prologue);
+
             //chara_leftFade.isFadeIn = true;
             //chara_rightFade.isFadeIn = true;
             check = true;
@@ -97,7 +99,6 @@ namespace NTextManager
             blackoutCheck = true;
             Vector2 textWindowMove = new Vector2(0, posY);
             StartCoroutine(LoadText());
-
         }
 
         IEnumerator LoadText()
@@ -236,8 +237,8 @@ namespace NTextManager
         {
             if (Input.GetKey(KeyCode.Space) && !checkIfTheStoryIsOver)
             {
-                audioSource.PlayOneShot(audioClip);
-
+                //audioSource.PlayOneShot(audioClip);
+                SoundManager.instance.PlaySE(SoundManager.SE_Type.Prologue_Next);
                 currentLineNum++;
 
                 if (currentLineNum >= lineIsTheEnd()) { checkIfTheStoryIsOver = true; Debug.Log(checkIfTheStoryIsOver); };
