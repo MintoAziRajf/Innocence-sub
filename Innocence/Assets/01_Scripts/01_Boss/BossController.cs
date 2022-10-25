@@ -33,9 +33,6 @@ public class BossController : MonoBehaviour
     private Vector2[] attackPos;
     private int delay;
 
-    //1f
-    private float frame = 1f / 60f;
-
     void Awake()
     {
         //BGM
@@ -44,9 +41,7 @@ public class BossController : MonoBehaviour
         csvManager = GameObject.Find("CSVManager").GetComponent<CSVManager>();
         bossDatas = csvManager.MainDatas;
         serifDatas = csvManager.SubDatas;
-        Debug.Log(bossDatas[1][5]);
-        GameObject.Find("Player").GetComponent<PlayerController>().Steps = 24; //bossデータから歩数を持ってくるint.Parse(bossDatas[0][5])
-
+        GameObject.Find("Player").GetComponent<PlayerController>().Steps = int.Parse(bossDatas[1][5]); //bossデータから歩数を持ってくる
         StartCoroutine(BattleStart());
     }
 
@@ -58,7 +53,7 @@ public class BossController : MonoBehaviour
         //初期待機時間
         for (int i = 0; i < startDelay; i++)
         {
-            yield return new WaitForSeconds(frame);
+            yield return null;
         }
         bossText.text = serifDatas[0][0];
         //攻撃loop
@@ -67,10 +62,9 @@ public class BossController : MonoBehaviour
             //攻撃
             Attack(i);
             //攻撃クールタイム
-            Debug.Log((bossDatas[i][4]));
             for (int j = 0; j < int.Parse(bossDatas[i][4]); j++)
             {
-                yield return new WaitForSeconds(frame);
+                yield return null;
             }
             //表情、セリフ入れ替え
             if (i == (bossDatas.Count / 4))
@@ -145,7 +139,7 @@ public class BossController : MonoBehaviour
                 //Delay
                 for (int i = 0; i < 30; i++)
                 {
-                    yield return new WaitForSeconds(frame);
+                    yield return null;
                 }
                 SoundManager.instance.PlaySE(SoundManager.SE_Type.B_Chain_2);
                 break;
@@ -153,14 +147,14 @@ public class BossController : MonoBehaviour
                 SoundManager.instance.PlaySE(SoundManager.SE_Type.B_Chain_1);
                 for (int i = 0; i < 30; i++)
                 {
-                    yield return new WaitForSeconds(frame);
+                    yield return null;
                 }
                 SoundManager.instance.PlaySE(SoundManager.SE_Type.B_Chain_2);
                 break;
             case 2:
                 for (int i = 0; i < 30; i++)
                 {
-                    yield return new WaitForSeconds(frame);
+                    yield return null;
                 }
                 SoundManager.instance.PlaySE(SoundManager.SE_Type.B_Thunder);
                 break;

@@ -1,8 +1,8 @@
-O,W,W,O,W,O,O
-O,T,O,O,B,W,W
-S,S,S,W,O,O,O
-O,S,O,W,O,O,O
-O,O,O,O,S,S,S
-O,O,O,O,O,O,O
+O,O,W,O,O,W,W
+O,W,O,S,T,W,W
+W,O,B,O,S,O,O
+O,S,S,S,S,S,O
+O,O,W,O,W,O,O
+P,O,O,O,S,O,O
 Steps,,,,,,
-25,,,,,,
+40,,,,,,

@@ -41,6 +41,12 @@ MonoBehaviour:
     m_SerializedLabels: []
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
+  - m_GUID: 12633e0bf24ba9e48b15ee208faff54b
+    m_Address: Assets/08_CSV/game_7.csv
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: 15fa1de3b1501c24aa74f6bf01dd4d0c
     m_Address: Assets/08_CSV/map_0.csv
     m_ReadOnly: 0
@@ -205,6 +211,12 @@ MonoBehaviour:
     m_TargetAsset: {fileID: 0}
   - m_GUID: a510b51e5cb693b4dbb3dc424ee3b912
     m_Address: Assets/StoryFile/CSV/test.csv
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: a6a42f702f599fd4692ec2bf8d0b000e
+    m_Address: Assets/08_CSV/map_7.csv
     m_ReadOnly: 0
     m_SerializedLabels: []
     m_MainAsset: {fileID: 0}

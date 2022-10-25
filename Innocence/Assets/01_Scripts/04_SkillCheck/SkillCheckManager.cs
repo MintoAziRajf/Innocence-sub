@@ -7,15 +7,15 @@ public class SkillCheckManager : MiniGameMonoBehaviour
 {
     //Debug
     public int debugDiff = 0;
-
+    public bool isDebug = false;
     //GameManager
     MainGameManager mGameManager;
     SkillCheckController scc;
 
     [SerializeField] private GameObject nodePrefab = null;
 
-    private float time = 10f;　 //制限時間
-    
+    private float time = 10f;  //制限時間
+
     //フラグ
     private bool isStart = false;
     public bool IsStart
@@ -56,16 +56,22 @@ public class SkillCheckManager : MiniGameMonoBehaviour
 
     void OnEnable()
     {
-        mGameManager = GameObject.Find("GameManager").GetComponent<MainGameManager>();
         csvManager = GameObject.Find("CSVManager").GetComponent<CSVManager>();
-        gameInfo = csvManager.SkillCheckInfo(mGameManager.Difficulty);
         scc = GameObject.Find("Player").GetComponent<SkillCheckController>();
-        //gameInfo = csvManager.SkillCheckInfo(debugDiff);
+        if (!isDebug)
+        {
+            mGameManager = GameObject.Find("GameManager").GetComponent<MainGameManager>();
+            gameInfo = csvManager.SkillCheckInfo(mGameManager.Difficulty);
+        }
+        else
+        {
+            gameInfo = csvManager.SkillCheckInfo(debugDiff);
+        }
         SetDifficulty();
         CreateNode();
         StartCoroutine(StartDelay());
     }
-    
+
     void Update()
     {
         if (!isStart) return;
@@ -103,7 +109,7 @@ public class SkillCheckManager : MiniGameMonoBehaviour
     private void CreateNode()
     {
         float angle = 0f;
-        for(int i = 0; i < energy; i++)
+        for (int i = 0; i < energy; i++)
         {
             angle = float.Parse(gameInfo[3 + i]);
             GameObject node = Instantiate(nodePrefab, this.transform);
