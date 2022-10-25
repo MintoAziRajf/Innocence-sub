@@ -172,7 +172,8 @@ public class CSVManager : SingletonMonoBehaviour<CSVManager>
             else if (masterDatas[stages][1] == "FALSE")
             {
                 Debug.Log("stagesが" + stages + "なので、プロローグシーンをロードします。");
-                loading.StartCoroutine("SceneLoading", "Prologue_" + ((stages + 1) / 3).ToString("0"));
+                loading.StartCoroutine("SceneLoading", "01_Battle");
+                //loading.StartCoroutine("SceneLoading", "Prologue_" + ((stages + 1) / 3).ToString("0"));
             }
         }
     }
