@@ -132,8 +132,8 @@ public class MainGameManager : SingletonMonoBehaviour<MainGameManager>
         //クリアデータの保存
         csvManager.KeepPlayerData(csvManager.Stages, playerController.Steps);
         
-        yield return new WaitForSeconds(4.0f); //result表示中待機
-        //yield return new WaitWhile(() => !Input.GetKeyDown(KeyCode.Space)); //待機後Spaceキーで次のステージへ
+        yield return new WaitForSeconds(3.0f); //result表示中待機
+        yield return new WaitWhile(() => !Input.GetKeyDown(KeyCode.Space)); //待機後Spaceキーで次のステージへ
 
         if (isBattle)
         {
