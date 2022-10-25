@@ -18,10 +18,12 @@ public class GoalAnimation : MonoBehaviour
         else if (time > 0.5f)
         {
             posY = -0.005f;
+            Debug.Log("a");
         }
         else
         {
             posY = +0.005f;
+            Debug.Log("b");
         }
         this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + posY, this.transform.position.z);
     }

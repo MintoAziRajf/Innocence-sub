@@ -5,14 +5,27 @@ using System;
 
 public class StoneController : MonoBehaviour
 {
-    Vector3 moveX = new Vector3(1f, 0, 0);//x軸方向に1マス移動するときの距離
-    Vector3 moveY = new Vector3(0, 1f, 0);//y軸方向に1マス移動するときの距離
+    //移動距離
+    private Vector3[] moveDirection =
+    {
+         new Vector3(0f, 1f, 0f),
+         new Vector3(1f, 0f, 0f),
+         new Vector3(0f, -1f, 0f),
+         new Vector3(-1f, 0f, 0f)
+    };
 
     [SerializeField] private float step = 2f;　//移動速度
     Vector3 target; //移動先の座標
 
     //各方向の衝突情報
     private bool[] isDirection = new bool[4] { false, false, false, false };
+    private enum DIRECTION
+    {
+        TOP,
+        RIGHT,
+        UNDER,
+        LEFT
+    }
 
     //stoneのアクセスフラグ
     private bool isAccess = false;
@@ -99,44 +112,14 @@ public class StoneController : MonoBehaviour
         }
 
         StartCoroutine(KickAnimation());
-
-        //指定方向に何もなければ移動
-        switch (direction)
+        if (isDirection[direction])
         {
-            case 0:
-                if (isDirection[0])
-                {
-                    //Stoneが動かなかったときのアニメーション
-                    stoneAnim.SetTrigger("KickCantMove");
-                    return;
-                }
-                target = transform.position + moveY;
-                break;
-            case 1:
-                if (isDirection[1])
-                {
-                    stoneAnim.SetTrigger("KickCantMove");
-                    return;
-                }
-                target = transform.position + moveX;
-                break;
-            case 2:
-                if (isDirection[2])
-                {
-                    stoneAnim.SetTrigger("KickCantMove");
-                    return;
-                }
-                target = transform.position - moveY;
-                break;
-            case 3:
-                if (isDirection[3])
-                {
-                    stoneAnim.SetTrigger("KickCantMove");
-                    return;
-                }
-                target = transform.position - moveX;
-                break;
+            //Stoneが動かなかったときのアニメーション
+            stoneAnim.SetTrigger("KickCantMove");
+            return;
         }
+
+        target = transform.position + moveDirection[direction];
     }
 
     private IEnumerator KickAnimation()

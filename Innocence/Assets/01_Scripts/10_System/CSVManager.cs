@@ -165,14 +165,36 @@ public class CSVManager : SingletonMonoBehaviour<CSVManager>
         {
             if (masterDatas[stages][1] == "TRUE")
             {
-                Debug.Log("stagesが" + stages + "なので、バトルシーンをロードします。");
-                loading.StartCoroutine("SceneLoading", "01_Battle");
+                Debug.Log("stagesが" + stages + "なので、パズルシーンをロードします。");
+                loading.StartCoroutine("SceneLoading", "01_MainGame");
+                
             }
             else if (masterDatas[stages][1] == "FALSE")
             {
-                Debug.Log("stagesが" + stages + "なので、パズルシーンをロードします。");
-                loading.StartCoroutine("SceneLoading", "01_MainGame");
+                Debug.Log("stagesが" + stages + "なので、プロローグシーンをロードします。");
+                loading.StartCoroutine("SceneLoading", "Prologue_" + ((stages + 1) / 3).ToString("0"));
             }
+        }
+    }
+
+    /// <summary>
+    /// プロローグかバトルシーンから呼び出される用
+    /// </summary>
+    /// <param name="isPrologue">プロローグからかどうか</param>
+    public void LoadGame(bool isPrologue)
+    {
+        //ステージ遷移オブジェクトを生成
+        GameObject SceneLoader = Instantiate(loadPrefab);
+        //ステージ遷移スクリプトを取得
+        Loading loading = SceneLoader.GetComponent<Loading>();
+        if (isPrologue)
+        {
+            loading.StartCoroutine("SceneLoading", "01_Battle");
+        }
+        else
+        {
+            //Epilogueをロード
+            loading.StartCoroutine("SceneLoading", "Epilogue_" + (stages / 3).ToString("0"));
         }
     }
 

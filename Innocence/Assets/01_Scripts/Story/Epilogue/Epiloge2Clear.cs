@@ -5,7 +5,7 @@ public class Epiloge2Clear : TextManager
     protected override void Blackout()
     {
         fade.FadeOut(0, () => fade.FadeIn(3));
-        //   SceneManager.LoadScene(""); ‚Ç‚ÌƒV[ƒ“‚É‘JˆÚ‚·‚é‚©‚Í•Û—¯
+        CSVManager.instance.LoadGame();
     }
 
     protected override int lineIsTheEnd()

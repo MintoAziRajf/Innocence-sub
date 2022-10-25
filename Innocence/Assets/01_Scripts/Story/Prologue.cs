@@ -5,6 +5,7 @@ public class Prologue : TextManager
     protected override void Blackout()
     {
         fade.FadeOut(0, () => fade.FadeIn(3));
-        //   SceneManager.LoadScene(""); どのシーンに遷移するかは不明
+        CSVManager.instance.Stages = -1;
+        CSVManager.instance.LoadGame();
     }
 }
