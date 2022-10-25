@@ -217,7 +217,7 @@ public class CSVManager : SingletonMonoBehaviour<CSVManager>
     /// </summary>
     private void LoadPlayerData()
     {
-        playerPath = Application.dataPath + @"\08_CSV\PlayerSave.csv";
+        playerPath = Application.dataPath + @"\PlayerSave.csv";
         if (!File.Exists(playerPath))
         {
             using (File.Create(playerPath)) ;
