@@ -13,7 +13,7 @@ EditorBuildSettings:
     guid: c6a284f7765902943bfd66f9889e24ef
   - enabled: 0
     path: 
-    guid: f42701f3446bbae45a71e3b2352b6178
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/00_Scenes/07_StageSelect.unity
     guid: 697b1c043c3af9643bd34063a599b12d
@@ -38,31 +38,31 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/00_Scenes/06_Credits.unity
     guid: 0636e7a8a3077fe4c8f5a3ee181aaf25
-  - enabled: 1
+  - enabled: 0
     path: Assets/00_Scenes/Epilogues/Epilogue_1.unity
     guid: 3c09bdfe037645240884059df95e7c8a
-  - enabled: 1
+  - enabled: 0
     path: Assets/00_Scenes/Epilogues/Epilogue_2.unity
     guid: 006f2943dff213743949160e89d8d3a8
-  - enabled: 1
+  - enabled: 0
     path: Assets/00_Scenes/Epilogues/Epilogue_3.unity
     guid: abdacd992e40add4994278e69d2f7c13
-  - enabled: 1
+  - enabled: 0
     path: Assets/00_Scenes/Epilogues/Epilogue_4.unity
     guid: 9d18260216bbb374f854979ea17498d9
-  - enabled: 1
+  - enabled: 0
     path: Assets/00_Scenes/Epilogues/Prologue_1.unity
     guid: 08ace4a0fb3eaf549beda0806ad5b96f
-  - enabled: 1
+  - enabled: 0
     path: Assets/00_Scenes/Epilogues/Prologue_2.unity
     guid: 4541d22ef3b742b4c9346f29726343dc
-  - enabled: 1
+  - enabled: 0
     path: Assets/00_Scenes/Epilogues/Prologue_3.unity
     guid: e867fc83e63d3fe4e97ec59281d2d9ca
-  - enabled: 1
+  - enabled: 0
     path: Assets/00_Scenes/Epilogues/Prologue_4.unity
     guid: 81849ecbaf71d3e4ba7c8f2023f58b37
-  - enabled: 1
+  - enabled: 0
     path: Assets/00_Scenes/Epilogues/Prologue.unity
     guid: d1940acdfecdc974ab87caf61645c4ca
   m_configObjects:

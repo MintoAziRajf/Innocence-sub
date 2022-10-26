@@ -137,6 +137,12 @@ MonoBehaviour:
     m_SerializedLabels: []
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
+  - m_GUID: cdc22b4b18c4d39418964fa8c814574b
+    m_Address: Assets/08_CSV/StageInfo.csv
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: d7437ca3ae3fdd04fb9fc155a3c00c48
     m_Address: Assets/StoryFile/CSV/Epilogue1ClaerState.csv
     m_ReadOnly: 0

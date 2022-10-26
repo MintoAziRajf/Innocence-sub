@@ -36,7 +36,7 @@ public class SkillCheckController : MonoBehaviour
     private GameObject playerVisual = null; //見た目を回転させる用
     private GameObject mCamera = null; //カメラ移動用
     [SerializeField] private Transform cameraLookAt = null; //カメラの視先
-    private float speed = -10f; //回転速度(何秒かけるか)
+    private float speed = -5f; //回転速度(何秒かけるか)
 
     //ステージの中心
     private Vector3 center = Vector3.zero;
@@ -75,6 +75,7 @@ public class SkillCheckController : MonoBehaviour
             if (energy == 0)
             {
                 //空撃ちのような音
+                SoundManager.instance.PlaySE(SoundManager.SE_Type.SC_NoEnergy);
                 Debug.Log("SkillCheck:空撃ち");
                 return;
             }
@@ -103,7 +104,8 @@ public class SkillCheckController : MonoBehaviour
     {
         //回数消費
         energy--;
-        //UI表示
+        //UI表示用
+        skillCheckManager.Energy = skillCheckManager.Energy - 1;
     }
 
     private void OnTriggerEnter(Collider other)

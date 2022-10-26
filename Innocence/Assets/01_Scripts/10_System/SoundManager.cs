@@ -53,7 +53,8 @@ public class SoundManager : SingletonMonoBehaviour<SoundManager>
         B_Damage,
         SC_Miss,
         SC_Success,
-        Prologue_Next
+        Prologue_Next,
+        SC_NoEnergy
     }
 
     // クロスフェード時間

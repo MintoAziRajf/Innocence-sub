@@ -11,6 +11,9 @@ public class Result : MonoBehaviour
     [SerializeField] private Image rankImage_sub = null;
     [SerializeField] private Sprite[] rankSprite = new Sprite[3];
 
+    [SerializeField] private Text stageTitle = null;
+    [SerializeField] private Text stagesText = null;
+
     Animator anim;
 
     private enum RANK
@@ -29,8 +32,11 @@ public class Result : MonoBehaviour
     /// リザルト表示
     /// </summary>
     /// <param name="remainingSteps">残り歩数</param>
-    public void ResultData(int remainingSteps)
+    public void ResultData(int remainingSteps,int stages, string name)
     {
+        stageTitle.text = name;
+        stagesText.text = "STAGE-" + stages.ToString("00");
+
         RANK rank = CheckRank(remainingSteps); 　　　 //ランク判定
         anim.SetInteger("Rank",(int)rank); 　　　　   //ランクに応じたアニメーション起動
         rankImage.sprite = rankSprite[(int)rank];     //ランクに応じてrankSprite[]を表示
