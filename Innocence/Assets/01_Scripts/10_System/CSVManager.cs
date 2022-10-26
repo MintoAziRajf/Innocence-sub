@@ -51,6 +51,14 @@ public class CSVManager : SingletonMonoBehaviour<CSVManager>
     {
         return skillCheckDatas[diff];
     }
+    List<string[]> stageInfoDatas = new List<string[]>();//ステージ名
+    public string StageInfo
+    {
+        get
+        {
+            return stageInfoDatas[stages][0];
+        }
+    }
 
     void Awake()
     {
@@ -122,6 +130,9 @@ public class CSVManager : SingletonMonoBehaviour<CSVManager>
             LoadCSV(masterDatas[i][3], subDatas[i], true);
             yield return new WaitUntil(() => !isLoad);
         }
+        //ステージ名のロード
+        LoadCSV("StageInfo", stageInfoDatas, false);
+        yield return new WaitUntil(() => !isLoad);
         //ミニゲームのデータを読み込む
         LoadCSV("SkillCheck", skillCheckDatas, true);
     }
@@ -217,6 +228,7 @@ public class CSVManager : SingletonMonoBehaviour<CSVManager>
     /// </summary>
     private void LoadPlayerData()
     {
+        playerDatas.Clear();
         playerPath = Application.dataPath + @"\PlayerSave.csv";
         if (!File.Exists(playerPath))
         {

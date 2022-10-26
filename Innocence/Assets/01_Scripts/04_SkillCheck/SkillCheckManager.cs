@@ -14,7 +14,7 @@ public class SkillCheckManager : MiniGameMonoBehaviour
 
     [SerializeField] private GameObject nodePrefab = null;
 
-    private float time = 10f;  //制限時間
+    private float time = 5f;  //制限時間
 
     //フラグ
     private bool isStart = false;
@@ -42,17 +42,20 @@ public class SkillCheckManager : MiniGameMonoBehaviour
     public int Energy
     {
         get { return energy; }
+        set { energy = value; DisplayInterface(); }
     }
     //クリアノルマ回数
     private int quota = 0;
     public int Quota
     {
         get { return quota; }
-        set { quota = value; }
+        set { quota = value; if (value <= 0) quota = 0; DisplayInterface(); }
     }
 
     //UI
     [SerializeField] private GameObject clearUI = null;
+    [SerializeField] private TextMesh quotaText = null; //ノルマ表示用
+    [SerializeField] private TextMesh energyText = null;//エネルギー表示用
 
     void OnEnable()
     {
@@ -70,6 +73,7 @@ public class SkillCheckManager : MiniGameMonoBehaviour
         SetDifficulty();
         CreateNode();
         StartCoroutine(StartDelay());
+        DisplayInterface();
     }
 
     void Update()
@@ -87,7 +91,7 @@ public class SkillCheckManager : MiniGameMonoBehaviour
     {
         isStart = false;
         scc.IsStart = false;
-        if (quota <= 0)
+        if (quota == 0)
         {
             Debug.Log("成功");
             //ClearUIをアクティブ
@@ -142,5 +146,12 @@ public class SkillCheckManager : MiniGameMonoBehaviour
         //ゲームスタート
         isStart = true;
         scc.IsStart = true;
+    }
+
+    //UI表示
+    private void DisplayInterface()
+    {
+        quotaText.text = quota.ToString("00");
+        energyText.text = energy.ToString("00");
     }
 }

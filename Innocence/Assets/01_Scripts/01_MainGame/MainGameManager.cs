@@ -128,7 +128,7 @@ public class MainGameManager : SingletonMonoBehaviour<MainGameManager>
         //SE
         SoundManager.instance.PlaySE(SoundManager.SE_Type.M_Goal);
         //リザルトスクリプトに後の処理を渡す
-        gameclearObj.GetComponent<Result>().ResultData(playerController.Steps);
+        gameclearObj.GetComponent<Result>().ResultData(playerController.Steps,csvManager.Stages,csvManager.StageInfo);
         //クリアデータの保存
         csvManager.KeepPlayerData(csvManager.Stages, playerController.Steps);
         

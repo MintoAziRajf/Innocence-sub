@@ -1090,7 +1090,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 79.06, y: 158.35}
+  m_AnchoredPosition: {x: 79.06, y: 129.8}
   m_SizeDelta: {x: 1600, y: 314}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &216466246
@@ -2478,9 +2478,11 @@ MonoBehaviour:
   rankImage: {fileID: 1409704976}
   rankImage_sub: {fileID: 1581480457}
   rankSprite:
-  - {fileID: 21300000, guid: fd1d6fe983df44c46a03a98586dc1177, type: 3}
   - {fileID: 21300000, guid: 81218fd1908331d4b8d900c9304efb5a, type: 3}
+  - {fileID: 21300000, guid: fd1d6fe983df44c46a03a98586dc1177, type: 3}
   - {fileID: 21300000, guid: c6696dde81d8b604f9b671c91ad27279, type: 3}
+  stageTitle: {fileID: 1168718157}
+  stagesText: {fileID: 768138435}
 --- !u!95 &569524897
 Animator:
   serializedVersion: 3
@@ -4375,7 +4377,7 @@ PrefabInstance:
     - target: {fileID: 290162507122275953, guid: 05a4dc58e4edd2f44a77cb62537fad82,
         type: 3}
       propertyPath: debugStage
-      value: 2
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 290162507122275954, guid: 05a4dc58e4edd2f44a77cb62537fad82,
         type: 3}

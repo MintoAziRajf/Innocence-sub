@@ -103,10 +103,10 @@ namespace StageSelectScene
                     nameNumber = i;
 
                     if(i == 0) { levelTextRank.text = ""; }
-                    if (i >= 1 && i < 3) { levelTextRank.text = "- EAGY -"; levelImages.color = green; }
-                    if (i > 3 && i < 6) { levelTextRank.text = "- NOMAL -"; levelImages.color = yellow; }
-                    if (i > 6 && i < 9) { levelTextRank.text = "- HARD -"; levelImages.color = red; }
-                    if (i > 9 && i < 12) { levelTextRank.text = "- NIGHTMEA -"; levelImages.color = purple; }
+                    if (i >= 1 && i <= 3) { levelTextRank.text = "- EASY -"; levelImages.color = green; }
+                    if (i > 3 && i <= 6) { levelTextRank.text = "- NORMAL -"; levelImages.color = yellow; }
+                    if (i > 6 && i <= 9) { levelTextRank.text = "- HARD -"; levelImages.color = red; }
+                    if (i > 9 && i <= 12) { levelTextRank.text = "- NIGHTMARE -"; levelImages.color = purple; }
 
                     if (i < 10) stageNumber.text = "STAGE - 0" + i;
                     else stageNumber.text = "STAGE - " + i;
