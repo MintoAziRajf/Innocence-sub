@@ -43,6 +43,7 @@ public class MainGameManager : SingletonMonoBehaviour<MainGameManager>
     private PlayerController playerController;
     private GameObject player;
     private StoneController stoneController;
+    private bool pause = true;
 
     //Pause
     [SerializeField] private GameObject pauseObj = null;
@@ -185,10 +186,14 @@ public class MainGameManager : SingletonMonoBehaviour<MainGameManager>
     {
         //SE
         SoundManager.instance.PlaySE(SoundManager.SE_Type.Submit);
-        //SceneLoad
-        GameObject SceneLoader = Instantiate(loadPrefab);
-        Loading loading = SceneLoader.GetComponent<Loading>();
-        loading.StartCoroutine("SceneLoading", "00_Title");
+        if(pause)
+        {
+            //SceneLoad
+            GameObject SceneLoader = Instantiate(loadPrefab);
+            Loading loading = SceneLoader.GetComponent<Loading>();
+            loading.StartCoroutine("SceneLoading", "00_Title");
+            pause = false;
+        }    
     }
     //ミニゲームをすべてスキップする
     public void　SkipMiniGame()

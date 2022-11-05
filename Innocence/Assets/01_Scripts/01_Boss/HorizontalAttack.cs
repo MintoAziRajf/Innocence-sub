@@ -32,7 +32,7 @@ public class HorizontalAttack : BossAttack
         //警告
         for (int i = 0; i < startDelay; i++)
         {
-            yield return null;
+            yield return new WaitForSeconds(1f/60f);
             scale.x = scale.x - (1f / (float)startDelay);
             this.transform.localScale = scale;
         }
@@ -44,7 +44,7 @@ public class HorizontalAttack : BossAttack
         //攻撃
         for (int i = 0; i < delay; i++)
         {
-            yield return null;
+            yield return new WaitForSeconds(1f / 60f);
             scale.x = scale.x - (1f / (float)delay);
             this.transform.localScale = scale;
         }

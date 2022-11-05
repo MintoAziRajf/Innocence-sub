@@ -36,7 +36,7 @@ public class DepthAttack : BossAttack
             alpha += 1f / (float)delay;
             c.a = alpha;
             sr.color = c;
-            yield return null;
+            yield return new WaitForSeconds(1f / 60f);
         }
         //マークの削除
         alpha = 0f;
@@ -59,7 +59,7 @@ public class DepthAttack : BossAttack
                 bc.enabled = false;
                 Debug.Log("OFF = " + time);
             }
-            yield return null;
+            yield return new WaitForSeconds(1f / 60f);
         }
         Destroy(this.gameObject);
     }
