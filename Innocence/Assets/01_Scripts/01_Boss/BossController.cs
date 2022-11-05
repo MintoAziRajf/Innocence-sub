@@ -32,6 +32,7 @@ public class BossController : MonoBehaviour
     [Range(0, 2)] private int attackType;
     private Vector2[] attackPos;
     private int delay;
+    private float oneFrame = 1f / 60f;
 
     void Awake()
     {
@@ -53,7 +54,7 @@ public class BossController : MonoBehaviour
         //初期待機時間
         for (int i = 0; i < startDelay; i++)
         {
-            yield return null;
+            yield return new WaitForSeconds(oneFrame);
         }
         bossText.text = serifDatas[0][0];
         //攻撃loop
@@ -64,7 +65,7 @@ public class BossController : MonoBehaviour
             //攻撃クールタイム
             for (int j = 0; j < int.Parse(bossDatas[i][4]); j++)
             {
-                yield return null;
+                yield return new WaitForSeconds(oneFrame);
             }
             //表情、セリフ入れ替え
             if (i == (bossDatas.Count / 4))
@@ -139,7 +140,7 @@ public class BossController : MonoBehaviour
                 //Delay
                 for (int i = 0; i < 30; i++)
                 {
-                    yield return null;
+                    yield return new WaitForSeconds(oneFrame);
                 }
                 SoundManager.instance.PlaySE(SoundManager.SE_Type.B_Chain_2);
                 break;
@@ -147,14 +148,14 @@ public class BossController : MonoBehaviour
                 SoundManager.instance.PlaySE(SoundManager.SE_Type.B_Chain_1);
                 for (int i = 0; i < 30; i++)
                 {
-                    yield return null;
+                    yield return new WaitForSeconds(oneFrame);
                 }
                 SoundManager.instance.PlaySE(SoundManager.SE_Type.B_Chain_2);
                 break;
             case 2:
                 for (int i = 0; i < 30; i++)
                 {
-                    yield return null;
+                    yield return new WaitForSeconds(oneFrame);
                 }
                 SoundManager.instance.PlaySE(SoundManager.SE_Type.B_Thunder);
                 break;
