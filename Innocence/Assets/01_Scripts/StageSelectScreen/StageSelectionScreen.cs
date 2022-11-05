@@ -43,6 +43,7 @@ namespace StageSelectScene
         Color green, yellow, red,purple;
 
         int nameNumber = 0;
+        int soundCount = 0;
         bool keyDown = false;
         bool isFirst = false;
         public string Names => names;
@@ -87,7 +88,8 @@ namespace StageSelectScene
 
         void OnTriggerEnter2D(Collider2D other)
         {
-            audioSource.PlayOneShot(audioClip);
+            ++soundCount;
+            if(soundCount > 1){audioSource.PlayOneShot(audioClip); }
         }
         void OnTriggerStay2D(Collider2D other)
         {
